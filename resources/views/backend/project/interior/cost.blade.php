@@ -12,7 +12,7 @@
         </div>
         <div class="col text-right">
             <a href="{{route('project.index')}}" class="btn btn-circle btn-info">
-                <span>All Project</span>
+                <span>our All Project</span>
             </a>
         </div>
     </div>
