@@ -1,0 +1,40 @@
+[21-Sep-2021 03:37:48 America/Detroit] PHP Fatal error:  Cannot redeclare activeRoutesLi() (previously declared in /home/datagate/accounts.datagatebd.com/app/Http/Helpers.php:7) in /home/datagate/accounts.datagatebd.com/app/Http/Helpers.php on line 15
+[24-Sep-2021 13:03:45 America/Detroit] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/datagate/accounts.datagatebd.com/app/Http/Helpers.php(3): Illuminate\Support\Facades\Facade::__callStatic('check', Array)
+#1 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(71): require('/home/datagate/...')
+#2 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(61): composerRequire8eebc99ddcbf38bc428b70d1a08c82b5('559dba61bcaafa7...', '/home/datagate/...')
+#3 /home/datagate/accounts.datagatebd.com/vendor/autoload.php(7): ComposerAutoloaderInit8eebc99ddcbf38bc428b70d1a08c82b5::getLoader()
+#4 /home/datagate/accounts.datagatebd.com/public/index.php(34): require('/home/datagate/...')
+#5 /home/datagate/accounts.datagatebd.com/server.php(21): require_once('/home/datagate/...')
+#6 {main}
+  thrown in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258
+[25-Sep-2021 11:49:32 America/Detroit] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/datagate/accounts.datagatebd.com/app/Models/User.php(70): Illuminate\Support\Facades\Facade::__callStatic('user', Array)
+#1 /home/datagate/accounts.datagatebd.com/app/Http/Helpers.php(5): App\Models\User::checkPermission()
+#2 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(71): require('/home/datagate/...')
+#3 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(61): composerRequire8eebc99ddcbf38bc428b70d1a08c82b5('559dba61bcaafa7...', '/home/datagate/...')
+#4 /home/datagate/accounts.datagatebd.com/vendor/autoload.php(7): ComposerAutoloaderInit8eebc99ddcbf38bc428b70d1a08c82b5::getLoader()
+#5 /home/datagate/accounts.datagatebd.com/public/index.php(34): require('/home/datagate/...')
+#6 /home/datagate/accounts.datagatebd.com/server.php(21): require_once('/home/datagate/...')
+#7 in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258
+[25-Sep-2021 11:50:05 America/Detroit] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/datagate/accounts.datagatebd.com/app/Models/User.php(70): Illuminate\Support\Facades\Facade::__callStatic('user', Array)
+#1 /home/datagate/accounts.datagatebd.com/app/Http/Helpers.php(4): App\Models\User::checkPermission()
+#2 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(71): require('/home/datagate/...')
+#3 /home/datagate/accounts.datagatebd.com/vendor/composer/autoload_real.php(61): composerRequire8eebc99ddcbf38bc428b70d1a08c82b5('559dba61bcaafa7...', '/home/datagate/...')
+#4 /home/datagate/accounts.datagatebd.com/vendor/autoload.php(7): ComposerAutoloaderInit8eebc99ddcbf38bc428b70d1a08c82b5::getLoader()
+#5 /home/datagate/accounts.datagatebd.com/public/index.php(34): require('/home/datagate/...')
+#6 /home/datagate/accounts.datagatebd.com/server.php(21): require_once('/home/datagate/...')
+#7 in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258
+[27-Sep-2021 11:24:00 UTC] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Auth\LoginController::loginOrCreateAccount() in /home/datagate/accounts.datagatebd.com/app/Http/Controllers/Auth/LoginController.php on line 160
+[01-Oct-2021 03:15:06 UTC] PHP Warning:  Uncaught ErrorException: require(/home/datagate/accounts.datagatebd.com/route/admin.php): failed to open stream: No such file or directory in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php:35
+Stack trace:
+#0 /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'require(/home/d...', '/home/datagate/...', 35, Array)
+#1 /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php(35): require()
+#2 /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(425): Illuminate\Routing\RouteFileRegistrar->register('/home/datagate/...')
+#3 /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/Router.php(382): Illuminate\Routing\Router->loadRoutes('/home/datagate/...')
+#4 /home/datagate/accounts.datagatebd.com/vend in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php on line 35
+[01-Oct-2021 03:15:06 UTC] PHP Fatal error:  Illuminate\Routing\RouteFileRegistrar::register(): Failed opening required '/home/datagate/accounts.datagatebd.com/route/admin.php' (include_path='.:/opt/alt/php73/usr/share/pear') in /home/datagate/accounts.datagatebd.com/vendor/laravel/framework/src/Illuminate/Routing/RouteFileRegistrar.php on line 35
