@@ -9,7 +9,7 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">Project Lists</h1>
+            <h1 class="h3">All Project Lists</h1>
         </div>
         <div class="col text-right">
             <a href="{{route('project.create')}}" class="btn btn-circle btn-info">
