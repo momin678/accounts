@@ -21,7 +21,7 @@
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
-            <h5 class="mb-md-0 h6">All Project</h5>
+            <h5 class="mb-md-0 h6">Master Project</h5>
         </div>
     </div>
     <div class="card-body">
