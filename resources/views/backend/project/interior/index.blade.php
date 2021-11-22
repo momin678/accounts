@@ -21,15 +21,7 @@
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <h5 class="mb-md-0 h6">Master Project</h5>
-=======
-            <h5 class="mb-md-0 h6">Development Project List</h5>
->>>>>>> d8f377e48fa8d293e07c3d307e44bb6390499be5
-=======
-            <h5 class="mb-md-0 h6">Development Project List</h5>
->>>>>>> d8f377e48fa8d293e07c3d307e44bb6390499be5
+            <h5>All Projecr</h5>
         </div>
     </div>
     <div class="card-body">
