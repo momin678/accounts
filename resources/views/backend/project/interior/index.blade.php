@@ -9,7 +9,7 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">All Project Lists</h1>
+            <h1 class="h3">All Project</h1>
         </div>
         <div class="col text-right">
             <a href="{{route('project.create')}}" class="btn btn-circle btn-info">
@@ -21,7 +21,11 @@
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
+<<<<<<< HEAD
             <h5 class="mb-md-0 h6">Master Project</h5>
+=======
+            <h5 class="mb-md-0 h6">Development Project List</h5>
+>>>>>>> d8f377e48fa8d293e07c3d307e44bb6390499be5
         </div>
     </div>
     <div class="card-body">
