@@ -29,12 +29,14 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item {{ activeRoutesLi([
-          'project.index', 'project.create', 'project.edit','project.get-paymet',
-          'get-paymet.index', 'get-paymet.create', 'get-paymet.edit',
+          'project.index', 'project.create', 'project.edit','project.get-payment',
+          'get-payment.index', 'get-payment.create', 'get-payment.edit',
+          'make-payment.index', 'make-payment.create', 'make-payment.edit',
+          'make-order.index', 'make-order.create', 'make-order.edit',
           'workers-list.index','workers-list.create','workers-list.edit','project.worker',
           'supplier.create','supplier.edit','supplier.index',
           'project.cost.index', 'project.cost.create', 'project.cost.edit'
-          ])}}">
+          ])}}">  
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
@@ -55,8 +57,8 @@
                   <p>Project List</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link {{ activeRoutesUlLi(['get-paymet.index','workers-list.create','supplier.create',])}}">
+              <li class="nav-item {{ activeRoutesUl(['get-payment.index','workers-list.create','supplier.create','make-payment.index',])}}">
+                <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
                     Payment
@@ -65,41 +67,41 @@
                 </a>
                 <ul class="nav nav-treeview pl-3">
                   <li class="nav-item">
-                    <a href="{{route('get-paymet.index')}}" class="nav-link">
+                    <a href="{{route('get-payment.index')}}" class="nav-link {{ activeRoutesUlLi(['get-payment.index']) }}">
                       <i class="fas fa-dot-circle nav-icon"></i>
                       <p>Get Payment</p>
                     </a>
                   </li>
-                  <li class="nav-item {{activeRoutesUl(['supplier.create', 'workers-list.create'])}}">
-                    <a href="#" class="nav-link">
+                  <li class="nav-item">
+                    <a href="{{route('make-payment.index')}}" class="nav-link {{ activeRoutesUlLi(['make-payment.index']) }}">
                       <i class="fas fa-dot-circle nav-icon"></i>
-                      <p>
-                        Make Payment
-                        <i class="right fas fa-angle-left"></i>
-                      </p>
+                      <p>Make Payment</p>
                     </a>
-                    <ul class="nav nav-treeview pl-3">
-                      <li class="nav-item">
-                        <a href="{{route('supplier.create')}}" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Supplier</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{route('workers-list.create')}}" class="nav-link">
-                          <i class="far fa-dot-circle nav-icon"></i>
-                          <p>Workers</p>
-                        </a>
-                      </li>
-                    </ul>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a href="{{route('project.cost.create')}}" class="nav-link {{ activeRoutesUlLi(['project.cost.create'])}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Purchase</p>
+              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit',])}}">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon far fa-circle"></i>
+                  <p>
+                    Goods Order
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
+                <ul class="nav nav-treeview pl-3">
+                  <li class="nav-item">
+                    <a href="{{route('make-order.create')}}" class="nav-link {{ activeRoutesUlLi(['make-order.create']) }}">
+                      <i class="fas fa-dot-circle nav-icon"></i>
+                      <p>Order Create</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{route('make-order.index')}}" class="nav-link {{ activeRoutesUlLi(['make-order.index']) }}">
+                      <i class="fas fa-dot-circle nav-icon"></i>
+                      <p>Order List</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <a href="{{route('supplier.index')}}" class="nav-link {{ activeRoutesUlLi(['supplier.edit','supplier.index'])}}">
@@ -641,28 +643,28 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item  pl-2">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-dot-circle nav-icon"></i>
                   <p>Level 2</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item  pl-2">
                 <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-dot-circle nav-icon"></i>
                   <p>
                     Level 2
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                  <li class="nav-item pl-2">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Level 3</p>
                     </a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item pl-2">
                     <a href="#" class="nav-link">
                       <i class="far fa-dot-circle nav-icon"></i>
                       <p>Level 3</p>

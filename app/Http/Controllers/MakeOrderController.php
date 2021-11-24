@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MakeOrder;
+use Illuminate\Http\Request;
 use App\Models\Cost;
 use App\Models\Project;
 use App\Models\SupplyGoods;
 use App\Models\Supplier;
-use Illuminate\Http\Request;
-use DB;
-class CostController extends Controller
+
+class MakeOrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,28 +30,9 @@ class CostController extends Controller
     {
         $all_project = Project::all();
         $all_supplier = Supplier::all();
-        return view('backend.project.interior.expenses', compact('all_project', 'all_supplier'));
+        return view('backend.project.interior.make_order', compact('all_project', 'all_supplier'));
     }
-    public function supply_goods_search(Request $request)
-    {
-        $query = $request->get('term','');
-        $supply_goods=\DB::table('supply_goods');
-        if($request->type=='name'){
-            $supply_goods->where('name','LIKE','%'.$query.'%');
-        }
-        if($request->type=='description'){
-            $supply_goods->where('description','LIKE','%'.$query.'%');
-        }
-        $supply_goods=$supply_goods->get();        
-        $data=array();
-        foreach ($supply_goods as $goods) {
-            $data[]=array('name'=>$goods->name, 'description'=>$goods->description);
-        }
-        if(count($data))
-            return $data;
-        else
-            return ['name'=>'', 'description'=>''];
-    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -59,19 +41,19 @@ class CostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $cost = new Cost;
         $cost->project_id = $request->project_id;
         $cost->supplier_id = $request->supplier_id;
         $cost->date = $request->date;
         $names = [];
+        $description = $request->description;
         if($request->name){
-          foreach($request->name as $key => $name){
-              $goods= SupplyGoods::where('name', $name)->first();
+          foreach($request->name as $key => $value){
+              $goods= SupplyGoods::where('name', $value)->first();
               if($goods == null){
                   $supply_goods = new SupplyGoods;
-                  $supply_goods->name= $name;
-                  $supply_goods->description= $description[$key];
+                  $supply_goods->name= $value;
+                  $supply_goods->description= $request->description[$key];
                   $supply_goods->save();
                   $names[] = $supply_goods->id;
               }else{
@@ -79,6 +61,7 @@ class CostController extends Controller
               }
             }
         }
+        // dd($names);
         $cost->name = json_encode($names);
         $quantities = [];
         if($request->quantity){
@@ -118,10 +101,10 @@ class CostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Cost  $cost
+     * @param  \App\Models\MakeOrder  $makeOrder
      * @return \Illuminate\Http\Response
      */
-    public function show(Cost $cost)
+    public function show(MakeOrder $makeOrder)
     {
         //
     }
@@ -129,10 +112,10 @@ class CostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Cost  $cost
+     * @param  \App\Models\MakeOrder  $makeOrder
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cost $cost)
+    public function edit(MakeOrder $makeOrder)
     {
         //
     }
@@ -141,10 +124,10 @@ class CostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Cost  $cost
+     * @param  \App\Models\MakeOrder  $makeOrder
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cost $cost)
+    public function update(Request $request, MakeOrder $makeOrder)
     {
         //
     }
@@ -152,16 +135,11 @@ class CostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cost  $cost
+     * @param  \App\Models\MakeOrder  $makeOrder
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cost $cost)
+    public function destroy(MakeOrder $makeOrder)
     {
         //
-    }
-    public function spending(Request $request, $id){
-        $projectID = $id;
-        $all_cost = Cost::where('project_id', $id)->get();
-        return view('backend.project.interior.cost', compact('projectID', 'all_cost'));
     }
 }

@@ -58,7 +58,7 @@ class GetPaymentController extends Controller
         $payment->document = json_encode($document);
         $payment->description = $request->description;
         $payment->save();
-        return back()->with('success', 'Project create successfull');
+        return back()->with('success', 'Project payment successfully');
     }
 
     /**

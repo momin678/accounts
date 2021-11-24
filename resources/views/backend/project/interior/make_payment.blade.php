@@ -13,10 +13,10 @@
 	<div class="col-md-6">
         <div class="card">
 			<div class="card-header">
-				<h5 class="mb-0 h6">Get Payment</h5>
+				<h5 class="mb-0 h6">Supplier Payment</h5>
 			</div>
 			<div class="card-body">
-                <form action="{{ route('get-payment.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('project.expenses.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="name">Payment Project</label>
@@ -28,8 +28,17 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="name">Supplier name</label>
+                        <select class="form-control multiple_select" name="worker_supplier" required>
+                            <option value=""></option>
+                            @foreach($all_supplier as $supplier)
+                                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="name">Payment Date</label>
-                        <input type="date" name="payment_date" class="form-control" required>
+                        <input type="date" name="date" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="name">Payment Amount <small>number only</small></label>
