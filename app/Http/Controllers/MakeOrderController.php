@@ -8,7 +8,7 @@ use App\Models\Cost;
 use App\Models\Project;
 use App\Models\SupplyGoods;
 use App\Models\Supplier;
-
+use PDF;
 class MakeOrderController extends Controller
 {
     /**
@@ -18,7 +18,7 @@ class MakeOrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.project.interior.order_details');
     }
 
     /**
@@ -41,49 +41,36 @@ class MakeOrderController extends Controller
      */
     public function store(Request $request)
     {
-        $cost = new Cost;
-        $cost->project_id = $request->project_id;
-        $cost->supplier_id = $request->supplier_id;
-        $cost->date = $request->date;
+        $all_project = Project::all();
+        $all_supplier = Supplier::all();
+        $order = new MakeOrder;
+        $order->project_id = $request->project_id;
+        $order->supplier_id = $request->supplier_id;
+        $order->date = date('Y-m-d');
+        $order->invoice_number = mt_rand(1000000000, 9999999999);
         $names = [];
-        $description = $request->description;
         if($request->name){
-          foreach($request->name as $key => $value){
-              $goods= SupplyGoods::where('name', $value)->first();
-              if($goods == null){
-                  $supply_goods = new SupplyGoods;
-                  $supply_goods->name= $value;
-                  $supply_goods->description= $request->description[$key];
-                  $supply_goods->save();
-                  $names[] = $supply_goods->id;
-              }else{
-                $names[] = $goods->id;
-              }
+            foreach($request->name as $key => $value){
+                $goods= SupplyGoods::where('name', $value)->first();
+                if($goods == null){
+                    $supply_goods = new SupplyGoods;
+                    $supply_goods->name= $value;
+                    $supply_goods->description= $request->description[$key];
+                    $supply_goods->save();
+                    $names[] = $supply_goods->id;
+                }else{
+                    $names[] = $goods->id;
+                }
             }
         }
-        // dd($names);
-        $cost->name = json_encode($names);
+        $order->name = json_encode($names);
         $quantities = [];
         if($request->quantity){
           foreach($request->quantity as $quantity){
-                $quantities[] = $quantity;
+            $quantities[] = $quantity;
             }
         }
-        $cost->quantity = json_encode($quantities);
-        $amounts = [];
-        $total_amount = 0;
-        if($request->amount){
-          foreach($request->amount as $amount){
-                $amounts[] = $amount;
-                $total_amount +=$amount;
-            }
-        }
-        if($request->supplier_id){
-            $supplier_id = Supplier::find($request->supplier_id);
-                $supplier_id->total_amount = $supplier_id->total_amount+$total_amount;
-                $supplier_id->save();
-        }
-        $cost->amount = json_encode($amounts);
+        $order->quantity = json_encode($quantities);
         $document = [];
         if($request->hasfile('document')){
           foreach($request->file('document') as $file){
@@ -92,12 +79,15 @@ class MakeOrderController extends Controller
             $document[] = $name;
             }
         }
-        $cost->document = json_encode($document);
-        $cost->description = $request->description;
-        $cost->save();
+        $order->save();
+        $pdf = PDF::loadView('backend.project.interior.order_details')->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('order-'.$order->invoice_number.'.pdf');
         return back()->with('success', 'Cost create successfully');
     }
-
+    public function order_details(){
+        $pdf = PDF::loadView('backend.project.interior.order_details')->setOptions(['defaultFont' => 'sans-serif']);   
+        return $pdf->download('order.pdf');
+    }
     /**
      * Display the specified resource.
      *
@@ -106,7 +96,7 @@ class MakeOrderController extends Controller
      */
     public function show(MakeOrder $makeOrder)
     {
-        //
+        
     }
 
     /**

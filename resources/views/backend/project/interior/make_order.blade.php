@@ -40,30 +40,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-8">
                             <input class="form-control autocomplete_field" type="text" name="name[]" data-type="name" id="name_1" placeholder="Product name" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control autocomplete_field" rows="1" data-type="description" name="description[]" id="description_1" placeholder="product description"></textarea>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-4">
                             <input type="text" name="quantity[]" class="form-control" required placeholder="product quantity">
                         </div>
-                        <div class="form-group col-md-5">
-                            <input type="number" name="amount[]" class="form-control" required placeholder="total price">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                            <textarea class="form-control autocomplete_field" rows="1" data-type="description" name="description[]" id="description_1" placeholder="product description"></textarea>
                         </div>
                         <div class="form-group col-md-2">
                             <button id="addRow" type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                     <div id="newRow"></div>
-                    <div class="form-group">
-                        <label for="name">Cost Document</label>
-                        <input type="file" name="document[]" class="form-control">
-                    </div>
-                    <div class="form-group mb-3 text-right">
+                    <div class="form-group mb-3">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -79,17 +72,14 @@
     $("#addRow").click(function () {
         var addNew = '';
         addNew += '<div class="row" id="inputFormRow">'
-        addNew +=   '<div class="form-group col-md-12">'
+        addNew +=   '<div class="form-group col-md-8">'
         addNew +=       '<input type="text" name="name[]" data-type="name" class="form-control autocomplete_field" id="name_'+id+'" placeholder="Product name" required>'
         addNew +=   '</div>'
-        addNew +=    '<div class="form-group col-md-12">'
-        addNew +=        '<textarea class="form-control autocomplete_field" data-type="description" rows="1" name="description[]" id="description_'+id+'" placeholder="product description"></textarea>'
-        addNew +=    '</div>'
-        addNew +=    '<div class="form-group col-md-5">'
+        addNew +=    '<div class="form-group col-md-4">'
         addNew +=        '<input type="text" name="quantity[]" class="form-control" required placeholder="product quantity">'
         addNew +=    '</div>'
-        addNew +=    '<div class="form-group col-md-5">'
-        addNew +=        '<input type="number" name="amount[]" class="form-control" required placeholder="product amount">'
+        addNew +=    '<div class="form-group col-md-10">'
+        addNew +=        '<textarea class="form-control autocomplete_field" data-type="description" rows="1" name="description[]" id="description_'+id+'" placeholder="product description"></textarea>'
         addNew +=    '</div>'
         addNew +=    '<div class="col-md-2">'
         addNew +=        '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>'

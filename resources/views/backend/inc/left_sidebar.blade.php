@@ -84,7 +84,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
-                    Goods Order
+                    Make Order
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
@@ -102,6 +102,12 @@
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Expenses</p>
+                </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('supplier.index')}}" class="nav-link {{ activeRoutesUlLi(['supplier.edit','supplier.index'])}}">
