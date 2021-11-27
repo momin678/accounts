@@ -8,6 +8,7 @@ use App\Models\Cost;
 use App\Models\Project;
 use App\Models\SupplyGoods;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 class MakeOrderController extends Controller
 {
@@ -80,12 +81,17 @@ class MakeOrderController extends Controller
             }
         }
         $order->save();
-        $pdf = PDF::loadView('backend.project.interior.order_details')->setOptions(['defaultFont' => 'sans-serif']);
-        return $pdf->download('order-'.$order->invoice_number.'.pdf');
-        return back()->with('success', 'Cost create successfully');
+        return redirect()->route('order-details', ['id' => $order->id]);
     }
-    public function order_details(){
-        $pdf = PDF::loadView('backend.project.interior.order_details')->setOptions(['defaultFont' => 'sans-serif']);   
+    public function order_details($id){
+        $order_info = MakeOrder::find($id);
+        $supply_info = Supplier::find($order_info->supplier_id);
+        return view('backend.project.interior.order_details', compact('order_info', 'supply_info'));
+    }
+    public function order_pdf($id){
+        $order_info = MakeOrder::find($id);
+        $supply_info = Supplier::find($order_info->supplier_id);
+        $pdf = PDF::loadView('backend.project.interior.order_pdf', compact('order_info', 'supply_info'));   
         return $pdf->download('order.pdf');
     }
     /**
@@ -107,7 +113,11 @@ class MakeOrderController extends Controller
      */
     public function edit(MakeOrder $makeOrder)
     {
-        //
+        // $order_info = MakeOrder::where('id',$makeOrder)->first();
+        // dd($makeOrder);
+        $all_project = Project::all();
+        $all_supplier = Supplier::all();
+        return view('backend.project.interior.edit_order', compact('all_project', 'all_supplier', 'makeOrder'));
     }
 
     /**

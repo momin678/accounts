@@ -47,11 +47,11 @@
                     <td>{{$loop->index+1}}</td>
                     <td>{{$project->name}}</td>
                     <td>TK. {{$project->budget}}</td>
-                    <td><a href="{{route('project.get-paymet', $project->id)}}">TK. {{$total_payment}}</a></td>
+                    <td><a href="">TK. {{$total_payment}}</a></td>
                     <td>TK. {{$project->budget - $total_payment}}</td>
                     <td><a href="{{route('project.spending', $project->id)}}">TK. {{$total_cost}}</a></td>
                     <td>TK. {{$project->budget - $total_cost}}</td>
-                </tr>   
+                </tr>
                 @endforeach                
             </tbody>
         </table>
