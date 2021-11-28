@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\SupplyGoods;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use App\Models\MakeOrder;
 use DB;
 class CostController extends Controller
 {
@@ -63,19 +64,20 @@ class CostController extends Controller
         $cost = new Cost;
         $cost->project_id = $request->project_id;
         $cost->supplier_id = $request->supplier_id;
-        $cost->date = $request->date;
+        $cost->date = date('Y-m-d');
         $names = [];
         if($request->name){
           foreach($request->name as $key => $name){
-              $goods= SupplyGoods::where('name', $name)->first();
-              if($goods == null){
-                  $supply_goods = new SupplyGoods;
-                  $supply_goods->name= $name;
-                  $supply_goods->description= $description[$key];
-                  $supply_goods->save();
-                  $names[] = $supply_goods->id;
-              }else{
-                $names[] = $goods->id;
+              if($name){
+                $goods= SupplyGoods::where('name', $name)->first();
+                if($goods == null){
+                    $supply_goods = new SupplyGoods;
+                    $supply_goods->name= $name;
+                    $supply_goods->save();
+                    $names[] = $supply_goods->id;
+                }else{
+                    $names[] = $goods->id;
+                }
               }
             }
         }
@@ -83,7 +85,9 @@ class CostController extends Controller
         $quantities = [];
         if($request->quantity){
           foreach($request->quantity as $quantity){
+              if($quantity){
                 $quantities[] = $quantity;
+              }                
             }
         }
         $cost->quantity = json_encode($quantities);
@@ -91,8 +95,10 @@ class CostController extends Controller
         $total_amount = 0;
         if($request->amount){
           foreach($request->amount as $amount){
+              if($amount){
                 $amounts[] = $amount;
                 $total_amount +=$amount;
+              }
             }
         }
         if($request->supplier_id){
@@ -104,14 +110,18 @@ class CostController extends Controller
         $document = [];
         if($request->hasfile('document')){
           foreach($request->file('document') as $file){
-            $name = time().rand(1,100).'.'.$file->extension();
+            $name = time().rand(100,999).'.'.$file->extension();
             $file->move(public_path('assets/document'), $name);
             $document[] = $name;
             }
         }
         $cost->document = json_encode($document);
-        $cost->description = $request->description;
-        $cost->save();
+        $complate = $cost->save();
+        if($complate){
+            $order_info = MakeOrder::find($request->project_id);
+            $order_info->status = 1;
+            $order_info->save();
+        }
         return back()->with('success', 'Cost create successfully');
     }
 

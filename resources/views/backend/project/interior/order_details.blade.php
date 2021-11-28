@@ -27,6 +27,9 @@
         <strong>Pay To:</strong><br />
         Name: {{$supply_info->name}},<br />
         Phone: {{$supply_info->phone}}, <br/>
+        @if ($supply_info->shop)
+          Shop Name: {{ $supply_info->shop }}
+        @endif
         Address: {{$supply_info->location}}<br />
         </address>
       </td>

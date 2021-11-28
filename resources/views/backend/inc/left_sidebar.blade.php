@@ -32,7 +32,7 @@
           'project.index', 'project.create', 'project.edit','project.get-payment',
           'get-payment.index', 'get-payment.create', 'get-payment.edit',
           'make-payment.index', 'make-payment.create', 'make-payment.edit',
-          'make-order.index', 'make-order.create', 'make-order.edit',
+          'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
           'workers-list.index','workers-list.create','workers-list.edit','project.worker',
           'supplier.create','supplier.edit','supplier.index',
           'project.cost.index', 'project.cost.create', 'project.cost.edit'
@@ -80,7 +80,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit',])}}">
+              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',])}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>

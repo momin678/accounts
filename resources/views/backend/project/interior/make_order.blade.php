@@ -48,10 +48,10 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-10">
+                        <div class="form-group col-md-11 col-10">
                             <textarea class="form-control autocomplete_field" rows="1" data-type="description" name="description[]" id="description_1" placeholder="product description"></textarea>
                         </div>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-1 col-2">
                             <button id="addRow" type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
@@ -78,10 +78,10 @@
         addNew +=    '<div class="form-group col-md-4">'
         addNew +=        '<input type="text" name="quantity[]" class="form-control" required placeholder="product quantity">'
         addNew +=    '</div>'
-        addNew +=    '<div class="form-group col-md-10">'
+        addNew +=    '<div class="form-group col-md-11 col-10">'
         addNew +=        '<textarea class="form-control autocomplete_field" data-type="description" rows="1" name="description[]" id="description_'+id+'" placeholder="product description"></textarea>'
         addNew +=    '</div>'
-        addNew +=    '<div class="col-md-2">'
+        addNew +=    '<div class="col-md-1 col-2">'
         addNew +=        '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>'
         addNew +=    '</div>'
         addNew += '</div>'
