@@ -21,6 +21,7 @@
 			<div class="card-body">
                 <form action="{{ route('project.cost.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" value="{{$order_info->id}}" name="order_id">
                     <div class="row">
                         <div class="form-group col-md-6">
                         <select class="form-control multiple_select" name="project_id" required>

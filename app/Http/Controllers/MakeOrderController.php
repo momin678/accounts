@@ -51,7 +51,7 @@ class MakeOrderController extends Controller
         $order->project_id = $request->project_id;
         $order->supplier_id = $request->supplier_id;
         $order->date = date('Y-m-d');
-        $order->invoice_number = mt_rand(1000000000, 9999999999);
+        $order->invoice_number = rand(100, 999).time();
         $names = [];
         if($request->name){
             foreach($request->name as $key => $value){
@@ -136,9 +136,7 @@ class MakeOrderController extends Controller
      */
     public function update(Request $request, MakeOrder $makeOrder)
     {
-        // dd($makeOrder);
         $order = MakeOrder::find($makeOrder->id);
-        // dd($order);
         $order->project_id = $request->project_id;
         $order->supplier_id = $request->supplier_id;
         $names = [];
@@ -169,7 +167,6 @@ class MakeOrderController extends Controller
             }
         }
         $order->quantity = json_encode($quantities);
-        // dd($order);
         $order->save();
         return redirect()->route('order-details', ['id' => $order->id]);
     }

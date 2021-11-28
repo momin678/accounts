@@ -33,10 +33,10 @@
           'get-payment.index', 'get-payment.create', 'get-payment.edit',
           'make-payment.index', 'make-payment.create', 'make-payment.edit',
           'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
-          'workers-list.index','workers-list.create','workers-list.edit','project.worker',
           'supplier.create','supplier.edit','supplier.index',
+          'other-cost.create','other-cost.edit','other-cost.index',
           'project.cost.index', 'project.cost.create', 'project.cost.edit'
-          ])}}">  
+          ])}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
@@ -104,7 +104,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('other-cost.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Expenses</p>
                 </a>
@@ -113,12 +113,6 @@
                 <a href="{{route('supplier.index')}}" class="nav-link {{ activeRoutesUlLi(['supplier.edit','supplier.index'])}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Supplier</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('workers-list.index')}}" class="nav-link {{ activeRoutesUlLi(['workers-list.edit','workers-list.index'])}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Workers</p>
                 </a>
               </li>
             </ul>

@@ -16,6 +16,7 @@ class CreateCostsTable extends Migration
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
             $table->string('project_id');
+            $table->string('supplier_id')->nullable();
             $table->date('date');
             $table->string('name');
             $table->string('quantity');

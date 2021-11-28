@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWorkersTable extends Migration
+class CreateOtherCostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateWorkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('workers', function (Blueprint $table) {
+        Schema::create('other_costs', function (Blueprint $table) {
             $table->id();
+            $table->string('project_id');
+            $table->date('date');
             $table->string('name');
-            $table->string('phone');
-            $table->string('values');
-            $table->string('adjust_values')->default(0.00);
-            $table->string('payments')->default(0.00);
-            $table->string('location')->nullable();
-            $table->text('description')->nullable();
+            $table->string('quantity');
+            $table->string('amount');
+            $table->string('document')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('other_costs');
     }
 }
