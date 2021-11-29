@@ -106,7 +106,7 @@
               <li class="nav-item">
                 <a href="{{route('other-cost.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Expenses</p>
+                  <p>Other Cost</p>
                 </a>
               </li>
               <li class="nav-item">

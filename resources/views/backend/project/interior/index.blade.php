@@ -45,7 +45,7 @@
                         $total_cost = App\Models\Project::totalCost($project->id);
                     @endphp
                     <td>{{$loop->index+1}}</td>
-                    <td>{{$project->name}}</td>
+                    <td><a href="{{ route('project.show', $project->id) }}">{{$project->name}}</a></td>
                     <td>TK. {{$project->budget}}</td>
                     <td><a href="">TK. {{$total_payment}}</a></td>
                     <td>TK. {{$project->budget - $total_payment}}</td>
