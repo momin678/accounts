@@ -9,11 +9,11 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">All Project</h1>
+            <h1 class="h3">All order</h1>
         </div>
         <div class="col text-right">
-            <a href="{{route('project.create')}}" class="btn btn-circle btn-info">
-                <span>New Project</span>
+            <a href="{{route('make-order.create')}}" class="btn btn-circle btn-info">
+                <span>New order</span>
             </a>
         </div>
     </div>
@@ -21,7 +21,7 @@
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
-            <h5>All Projecr</h5>
+            <h5 class="mb-md-0 h6">Development order List</h5>
         </div>
     </div>
     <div class="card-body">
@@ -29,28 +29,40 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th width="20%" scope="col">Name</th>
-                    <th scope="col">Values</th>
-                    <th scope="col">Peyment</th>
-                    <th scope="col">Due</th>
-                    <th scope="col">Spending/Cost</th>
-                    <th scope="col">Profite</th>
+                    <th width="20%" scope="col">Project Name</th>
+                    <th scope="col">Supplier Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Order Number</th>
+                    <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($projects as $project)
+                @foreach ($all_order as $order)
                 <tr>
-                    @php
-                        $total_payment = App\Models\Project::totalPayment($project->id);
-                        $total_cost = App\Models\Project::totalCost($project->id);
-                    @endphp
                     <td>{{$loop->index+1}}</td>
-                    <td><a href="{{ route('project.show', $project->id) }}">{{$project->name}}</a></td>
-                    <td>TK. {{$project->budget}}</td>
-                    <td><a href="">TK. {{$total_payment}}</a></td>
-                    <td>TK. {{$project->budget - $total_payment}}</td>
-                    <td><a href="{{route('project.spending', $project->id)}}">TK. {{$total_cost}}</a></td>
-                    <td>TK. {{$project->budget - $total_cost}}</td>
+                    <td>
+                        @foreach ($all_project as $project)
+                            @if ($order->project_id == $project->id)
+                                {{ $project->name }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach ($all_supplier as $supplier)
+                            @if ($order->supplier_id == $supplier->id)
+                                {{ $supplier->name }}
+                            @endif
+                        @endforeach
+                    </td>
+                    <td>{{$order->date}}</td>
+                    <td>{{$order->invoice_number}}</td>
+                    <td>
+                        @if ($order->status == 0)
+                           <a href="{{ route('order-check', $order->id) }}">Pandding</a> 
+                        @else
+                           Complate
+                        @endif
+                    </td>
                 </tr>
                 @endforeach                
             </tbody>

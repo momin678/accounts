@@ -25,6 +25,7 @@ class Project extends Model
         $total_cost = 0;
         $all_cost = Cost::where('project_id', $id)->get();
         $all_expenses = Expense::where('project_id', $id)->get();
+        $all_other_cost = OtherCost::where('project_id', $id)->get();
         foreach($all_cost as $cost){
             foreach(json_decode($cost->amount) as $amount){
                 $total_cost += $amount;
@@ -32,6 +33,11 @@ class Project extends Model
         }
         foreach($all_expenses as $cost){
             $total_cost += $cost->amount;
+        }
+        foreach($all_other_cost as $other_cost){
+            foreach(json_decode($other_cost->amount) as $amount){
+                $total_cost += $amount;
+            } 
         }
         return $total_cost;
     }

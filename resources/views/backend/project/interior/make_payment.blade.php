@@ -5,20 +5,19 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">All Worker Payment</h1>
+            <h1 class="h3">All Payment</h1>
         </div>
     </div>
 </div>
 <div class="row">
-	<div class="col-md-4">
-		<div class="card">
+	<div class="col-md-6">
+        <div class="card">
 			<div class="card-header">
-				<h5 class="mb-0 h6">Worker Payment</h5>
+				<h5 class="mb-0 h6">Supplier Payment</h5>
 			</div>
 			<div class="card-body">
                 <form action="{{ route('project.expenses.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="type" class="form-control" value="worker">
                     <div class="form-group">
                         <label for="name">Payment Project</label>
                         <select class="form-control multiple_select" name="project_id" required>
@@ -29,11 +28,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">Worker name</label>
+                        <label for="name">Supplier name</label>
                         <select class="form-control multiple_select" name="worker_supplier" required>
                             <option value=""></option>
-                            @foreach($all_worker as $worker)
-                                <option value="{{$worker->id}}">{{$worker->name}}</option>
+                            @foreach($all_supplier as $supplier)
+                                <option value="{{$supplier->id}}">{{$supplier->name}}</option>
                             @endforeach
                         </select>
                     </div>

@@ -74,14 +74,19 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
 // project route
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHistory']], function(){
     Route::resource('project', 'ProjectController', ['names'=>'project']);
-    Route::resource('get-paymet', 'GetPaymentController', ['names'=>'get-paymet']);
-    Route::get('project/get-payment/{id}', 'GetPaymentController@get_payment')->name('project.get-paymet');
-    Route::get('project/spending/{id}', 'CostController@spending')->name('project.spending');
+    Route::resource('get-payment', 'GetPaymentController', ['names'=>'get-payment']);
+    Route::resource('make-payment', 'MakePaymentController', ['names'=>'make-payment']);
     Route::resource('project/cost', 'CostController', ['names'=>'project.cost']);
-    Route::get('/supply-goods-search', 'CostController@supply_goods_search')->name('project.supply-goods-search');
-    Route::resource('workers-list', 'WorkerController', ['names'=>'workers-list']);
+    Route::resource('make-order', 'MakeOrderController', ['names'=>'make-order']);
     Route::resource('project/expenses', 'ExpenseController', ['names'=>'project.expenses']);
     Route::resource('supplier', 'SupplierController', ['names'=>'supplier']);
+    Route::resource('other-cost', 'OtherCostController', ['names'=>'other-cost']);
+    Route::get('order-check/{id}', 'MakeOrderController@order_check')->name('order-check');
+    Route::get('order-details/{id}', 'MakeOrderController@order_details')->name('order-details');
+    Route::get('order-pdf/{id}', 'MakeOrderController@order_pdf')->name('order-pdf');
+    Route::get('project/get-payment/{id}', 'GetPaymentController@get_payment')->name('project.get-payment');
+    Route::get('project/spending/{id}', 'CostController@spending')->name('project.spending');
+    Route::get('/supply-goods-search', 'CostController@supply_goods_search')->name('project.supply-goods-search');
 });
 // page route
 Route::get('contact-us', 'ContactController@contact')->name('contact-us');

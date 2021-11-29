@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCostsTable extends Migration
+class CreateMakePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateCostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('costs', function (Blueprint $table) {
+        Schema::create('make_payments', function (Blueprint $table) {
             $table->id();
             $table->string('project_id');
-            $table->string('supplier_id')->nullable();
+            $table->string('supplier_id');
             $table->date('date');
-            $table->string('name');
-            $table->string('quantity');
             $table->string('amount');
+            $table->string('method');
             $table->string('document')->nullable();
-            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateCostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('costs');
+        Schema::dropIfExists('make_payments');
     }
 }

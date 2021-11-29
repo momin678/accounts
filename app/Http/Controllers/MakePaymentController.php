@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Worker;
-use App\Models\Project;
+use App\Models\MakePayment;
 use Illuminate\Http\Request;
+use App\Models\GetPayment;
+use App\Models\Project;
+use App\Models\Worker;
+use App\Models\Supplier;
 
-class WorkerController extends Controller
+class MakePaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +18,10 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        $all_worker = Worker::all();
         $all_project = Project::all();
-        return view('backend.project.interior.workers', compact('all_worker', 'all_project'));
+        $all_worker = Worker::all();
+        $all_supplier = Supplier::all();
+        return view('backend.project.interior.make_payment', compact('all_project', 'all_worker', 'all_supplier'));
     }
 
     /**
@@ -27,9 +31,7 @@ class WorkerController extends Controller
      */
     public function create()
     {
-        $all_worker = Worker::all();
-        $all_project = Project::all();
-        return view('backend.project.interior.worker_payment', compact('all_worker', 'all_project'));
+        //
     }
 
     /**
@@ -40,34 +42,27 @@ class WorkerController extends Controller
      */
     public function store(Request $request)
     {
-        $worker = new Worker;
-        $worker->name = $request->name;
-        $worker->phone = $request->phone;
-        $worker->location = $request->location;
-        $worker->values = $request->values;
-        $worker->description = $request->description;
-        $worker->save();
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\MakePayment  $makePayment
      * @return \Illuminate\Http\Response
      */
-    public function show(Worker $worker)
+    public function show(MakePayment $makePayment)
     {
-        dd($worker);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\MakePayment  $makePayment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Worker $worker)
+    public function edit(MakePayment $makePayment)
     {
         //
     }
@@ -76,10 +71,10 @@ class WorkerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\MakePayment  $makePayment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Worker $worker)
+    public function update(Request $request, MakePayment $makePayment)
     {
         //
     }
@@ -87,10 +82,10 @@ class WorkerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Worker  $worker
+     * @param  \App\Models\MakePayment  $makePayment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Worker $worker)
+    public function destroy(MakePayment $makePayment)
     {
         //
     }

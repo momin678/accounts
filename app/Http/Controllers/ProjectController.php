@@ -48,7 +48,7 @@ class ProjectController extends Controller
             // dd( $request->document);
         if($request->hasfile('document')){
           foreach($request->file('document') as $file){
-            $name = time().rand(1,100).'.'.$file->extension();
+            $name = time().rand(100,999).'.'.$file->extension();
             $file->move(public_path('assets/document'), $name);
             $document[] = $name;
             }
@@ -56,7 +56,7 @@ class ProjectController extends Controller
         $project->document = json_encode($document);
         $project->description = $request->description;
         $project->save();
-        return back()->with('success', 'Project create successfull');
+        return back()->with('success', 'Project create successful');
     }
 
     /**
@@ -67,7 +67,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        dd($project);
     }
 
     /**

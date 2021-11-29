@@ -8,15 +8,15 @@ if(! function_exists('activeRoutesLi')){
         }
     }
 }
-//highlights the selected navigation ul on admin panel
+//highlights the selected navigation li->ul on admin panel
 if(! function_exists('activeRoutesUl')){
-    function activeRoutesUl(Array $routes, $output = 'style=display:block;'){
+    function activeRoutesUl(Array $routes, $output = 'menu-is-opening menu-open'){
         foreach($routes as $route){
             if(Route::currentRouteName() == $route) return $output;
         }
     }
 }
-//highlights the selected navigation ul li on admin panel
+//highlights the selected navigation li->ul->li on admin panel
 if(! function_exists('activeRoutesUlLi')){
     function activeRoutesUlLi(Array $routes, $output = "active"){
         foreach($routes as $route){
