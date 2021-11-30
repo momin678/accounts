@@ -29,7 +29,7 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item {{ activeRoutesLi([
-          'project.index', 'project.create', 'project.edit','project.get-payment',
+          'project.index', 'project.create', 'project.edit','project.get-payment', 'project.show',
           'get-payment.index', 'get-payment.create', 'get-payment.edit',
           'make-payment.index', 'make-payment.create', 'make-payment.edit',
           'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('project.index')}}" class="nav-link {{ activeRoutesUlLi(['project.index', 'project.edit'])}}">
+                <a href="{{route('project.index')}}" class="nav-link {{ activeRoutesUlLi(['project.index', 'project.edit', 'project.show'])}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project List</p>
                 </a>

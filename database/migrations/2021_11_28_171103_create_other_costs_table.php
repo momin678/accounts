@@ -17,6 +17,7 @@ class CreateOtherCostsTable extends Migration
             $table->id();
             $table->string('project_id');
             $table->date('date');
+            $table->string('invoice_number');
             $table->string('name');
             $table->string('quantity');
             $table->string('amount');

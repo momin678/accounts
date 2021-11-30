@@ -65,6 +65,7 @@ class CostController extends Controller
         $cost->project_id = $request->project_id;
         $cost->supplier_id = $request->supplier_id;
         $cost->date = date('Y-m-d');
+        $cost->invoice_number = $request->invoice_number;
         $names = [];
         if($request->name){
           foreach($request->name as $key => $name){

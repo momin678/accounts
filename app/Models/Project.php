@@ -10,8 +10,17 @@ class Project extends Model
     use HasFactory;
     protected $table = 'projects';
     
-    public function payment(){
+    public function cost()
+    {
+        return $this->hasMany(Cost::class);
+    }
+    public function getPayment()
+    {
         return $this->hasMany(GetPayment::class);
+    }
+    public function makePayment()
+    {
+        return $this->hasMany(MakePayment::class);
     }
     public static function totalPayment($id){
         $total_payment = 0;

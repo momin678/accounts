@@ -41,6 +41,7 @@ class OtherCostController extends Controller
         $cost = new OtherCost;
         $cost->project_id = $request->project_id;
         $cost->date = date('Y-m-d');
+        $cost->invoice_number = rand(100, 999).time();
         $names = [];
         if($request->name){
           foreach($request->name as $key => $name){

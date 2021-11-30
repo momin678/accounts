@@ -45,7 +45,6 @@ class ProjectController extends Controller
         $project->location = $request->location;
         $project->institution = $request->institution;
         $document = [];
-            // dd( $request->document);
         if($request->hasfile('document')){
           foreach($request->file('document') as $file){
             $name = time().rand(100,999).'.'.$file->extension();
@@ -67,7 +66,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        dd($project);
+        $project_info = $project;
+        $all_cost = Project::find($project->id)->cost;
+        $getPayment = Project::find($project->id)->getPayment;
+        $makePayment = Project::find($project->id)->makePayment;
+        return view('backend.project.interior.project_details', compact('project_info', 'all_cost', 'getPayment', 'makePayment'));
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateCostsTable extends Migration
             $table->string('project_id');
             $table->string('supplier_id')->nullable();
             $table->date('date');
+            $table->string('invoice_number');
             $table->string('name');
             $table->string('quantity');
             $table->string('amount');

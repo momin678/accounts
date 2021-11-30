@@ -37,18 +37,11 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->type == "worker"){
-            $worker = Worker::find($request->worker_supplier);
-            $worker->payments = $worker->payments+$request->amount;
-            $worker->save();
-        }elseif($request->type == "supplier"){
-            $supplier = Supplier::find($request->worker_supplier);
-            $supplier->paid_amount = $supplier->paid_amount+$request->amount;
-            $supplier->save();
-        }
+        $supplier = Supplier::find($request->worker_supplier);
+        $supplier->paid_amount = $supplier->paid_amount+$request->amount;
+        $supplier->save();
         $expense = new Expense;
         $expense->project_id = $request->project_id;
-        $expense->type = $request->type;
         $expense->worker_supplier = $request->worker_supplier;
         $expense->date = $request->date;
         $expense->amount = $request->amount;

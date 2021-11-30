@@ -6,7 +6,6 @@ use App\Models\MakePayment;
 use Illuminate\Http\Request;
 use App\Models\GetPayment;
 use App\Models\Project;
-use App\Models\Worker;
 use App\Models\Supplier;
 
 class MakePaymentController extends Controller
@@ -19,9 +18,8 @@ class MakePaymentController extends Controller
     public function index()
     {
         $all_project = Project::all();
-        $all_worker = Worker::all();
         $all_supplier = Supplier::all();
-        return view('backend.project.interior.make_payment', compact('all_project', 'all_worker', 'all_supplier'));
+        return view('backend.project.interior.make_payment', compact('all_project', 'all_supplier'));
     }
 
     /**
