@@ -16,7 +16,7 @@
 				<h5 class="mb-0 h6">Supplier Payment</h5>
 			</div>
 			<div class="card-body">
-                <form action="{{ route('project.expenses.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('make-payment.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="name">Payment Project</label>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label for="name">Supplier name</label>
-                        <select class="form-control multiple_select" name="worker_supplier" required>
+                        <select class="form-control multiple_select" name="supplier_id" required>
                             <option value=""></option>
                             @foreach($all_supplier as $supplier)
                                 <option value="{{$supplier->id}}">{{$supplier->name}}</option>

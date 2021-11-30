@@ -92,7 +92,7 @@
                             <tbody>
                                 @foreach ($all_cost as $cost)
                                     <tr>
-                                        <td><a href="#">{{ $cost->date }}</a></td>
+                                        <td><a href="{{ route('project.cost.show', $cost->id)}}">{{ $cost->date }}</a></td>
                                         <td>{{ $cost->invoice_number }}</td>
                                         <td>
                                             @php

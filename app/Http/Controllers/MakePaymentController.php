@@ -40,7 +40,26 @@ class MakePaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $supplier = Supplier::find($request->supplier_id);
+        $supplier->paid_amount = $supplier->paid_amount+$request->amount;
+        $supplier->save();
+        $makePayment = new MakePayment;
+        $makePayment->project_id = $request->project_id;
+        $makePayment->supplier_id = $request->supplier_id;
+        $makePayment->date = $request->date;
+        $makePayment->amount = $request->amount;
+        $makePayment->method = $request->method;
+        $document = [];
+        if($request->hasfile('document')){
+          foreach($request->file('document') as $file){
+            $name = time().rand(100,999).'.'.$file->extension();
+            $file->move(public_path('assets/document'), $name);
+            $document[] = $name;
+            }
+        }
+        $makePayment->document = json_encode($document);
+        $makePayment->save();
+        return back();
     }
 
     /**

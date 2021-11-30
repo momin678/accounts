@@ -95,11 +95,11 @@ class CostController extends Controller
         $amounts = [];
         $total_amount = 0;
         if($request->amount){
-          foreach($request->amount as $amount){
-              if($amount){
-                $amounts[] = $amount;
-                $total_amount +=$amount;
-              }
+            foreach($request->amount as $amount){
+                if($amount){
+                    $amounts[] = $amount;
+                    $total_amount +=$amount;
+                }
             }
         }
         if($request->supplier_id){
@@ -134,7 +134,7 @@ class CostController extends Controller
      */
     public function show(Cost $cost)
     {
-        //
+        dd($cost);
     }
 
     /**

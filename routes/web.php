@@ -78,7 +78,6 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
     Route::resource('make-payment', 'MakePaymentController', ['names'=>'make-payment']);
     Route::resource('project/cost', 'CostController', ['names'=>'project.cost']);
     Route::resource('make-order', 'MakeOrderController', ['names'=>'make-order']);
-    Route::resource('project/expenses', 'ExpenseController', ['names'=>'project.expenses']);
     Route::resource('supplier', 'SupplierController', ['names'=>'supplier']);
     Route::resource('other-cost', 'OtherCostController', ['names'=>'other-cost']);
     Route::get('order-check/{id}', 'MakeOrderController@order_check')->name('order-check');

@@ -22,6 +22,10 @@ class Project extends Model
     {
         return $this->hasMany(MakePayment::class);
     }
+    public function suppliers()
+    {
+        return $this->belongsToMany(MakePayment::class);
+    }
     public static function totalPayment($id){
         $total_payment = 0;
         $all_payment = GetPayment::where('project_id', $id)->get();
@@ -33,7 +37,7 @@ class Project extends Model
     public static function totalCost($id){
         $total_cost = 0;
         $all_cost = Cost::where('project_id', $id)->get();
-        $all_expenses = Expense::where('project_id', $id)->get();
+        $all_expenses = MakePayment::where('project_id', $id)->get();
         $all_other_cost = OtherCost::where('project_id', $id)->get();
         foreach($all_cost as $cost){
             foreach(json_decode($cost->amount) as $amount){

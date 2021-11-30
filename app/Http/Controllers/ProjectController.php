@@ -70,6 +70,8 @@ class ProjectController extends Controller
         $all_cost = Project::find($project->id)->cost;
         $getPayment = Project::find($project->id)->getPayment;
         $makePayment = Project::find($project->id)->makePayment;
+        $suppliers = Project::find($project->id)->suppliers;
+        dd($suppliers);
         return view('backend.project.interior.project_details', compact('project_info', 'all_cost', 'getPayment', 'makePayment'));
     }
 
