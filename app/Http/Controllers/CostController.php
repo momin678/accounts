@@ -134,7 +134,10 @@ class CostController extends Controller
      */
     public function show(Cost $cost)
     {
-        dd($cost);
+        $cost_info = $cost;
+        $project_info = Cost::find($cost->id)->project;
+        $supplier_info = Cost::find($cost->id)->supplier;
+        return view('backend.project.interior.cost_details', compact('cost_info','project_info', 'supplier_info'));
     }
 
     /**

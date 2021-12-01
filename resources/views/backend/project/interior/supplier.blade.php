@@ -8,12 +8,12 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">All Supplier</h1>
+          <h1 class="h3">All Supplier</h1>
         </div>
         <div class="col text-right">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-              Add Supplier
-            </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Add Supplier
+          </button>
         </div>
     </div>
 </div>
@@ -55,7 +55,7 @@
 				<h5 class="mb-0 h6">Add New Payment</h5>
 			</div>
 			<div class="card-body">
-        <form action="{{ route('project.expenses.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('project.cost.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="type" class="form-control" value="supplier">
             <div class="form-group">
@@ -63,7 +63,7 @@
                 <select class="form-control multiple_select" name="project_id" required>
                     <option value=""></option>
                     @foreach($all_project as $project)
-                        <option value="{{$project->id}}">{{$project->name}}</option>
+                      <option value="{{$project->id}}">{{$project->name}}</option>
                     @endforeach
                 </select>
             </div>

@@ -9,4 +9,12 @@ class Cost extends Model
 {
     use HasFactory;
     protected $table = 'costs';
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
+    }
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

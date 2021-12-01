@@ -47,9 +47,9 @@
                     <td>{{$loop->index+1}}</td>
                     <td><a href="{{ route('project.show', $project->id) }}">{{$project->name}}</a></td>
                     <td>TK. {{$project->budget}}</td>
-                    <td><a href="">TK. {{$total_payment}}</a></td>
+                    <td>TK. {{$total_payment}}</td>
                     <td>TK. {{$project->budget - $total_payment}}</td>
-                    <td><a href="{{route('project.spending', $project->id)}}">TK. {{$total_cost}}</a></td>
+                    <td>TK. {{$total_cost}}</td>
                     <td>TK. {{$project->budget - $total_cost}}</td>
                 </tr>
                 @endforeach                

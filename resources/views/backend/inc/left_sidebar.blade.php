@@ -35,7 +35,7 @@
           'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
           'supplier.create','supplier.edit','supplier.index',
           'other-cost.create','other-cost.edit','other-cost.index',
-          'project.cost.index', 'project.cost.create', 'project.cost.edit'
+          'project.cost.index', 'project.cost.create', 'project.cost.edit', 'project.cost.show'
           ])}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
@@ -52,7 +52,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('project.index')}}" class="nav-link {{ activeRoutesUlLi(['project.index', 'project.edit', 'project.show'])}}">
+                <a href="{{route('project.index')}}" class="nav-link {{ activeRoutesUlLi(['project.index', 'project.edit', 'project.show', 'project.cost.show'])}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Project List</p>
                 </a>

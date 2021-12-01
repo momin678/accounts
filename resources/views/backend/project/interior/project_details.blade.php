@@ -149,9 +149,12 @@
                             <tbody>
                                 @foreach ($makePayment as $payment)
                                     <tr>
-                                        <td><a href="#">{{ $payment->supplier_id }}</a></td>
+                                        @php
+                                            $supplier = \App\Models\Supplier::where('id', $payment->supplier_id)->select('name')->first();
+                                        @endphp
+                                        <td><a href="#">{{ $supplier->name }}</a></td>
                                         <td>{{ $payment->date }}</td>
-                                        <td>{{ $payment->amount }}</td>
+                                        <td>TK.{{ $payment->amount }}</td>
                                         <td>{{ $payment->method }}</td>
                                     </tr>                                    
                                 @endforeach

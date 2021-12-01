@@ -24,7 +24,8 @@ class Project extends Model
     }
     public function suppliers()
     {
-        return $this->belongsToMany(MakePayment::class);
+        // return $this->hasManyThrough(Supplier::class, MakePayment::class);
+        // return $this->belongsToMany(MakePayment::class, 'suppliers');
     }
     public static function totalPayment($id){
         $total_payment = 0;

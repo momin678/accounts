@@ -8,8 +8,8 @@
       </td>
     </tr>
     <tr style="background: #54b1b117;">
-      <td style="padding: 5px;">Date: {{$order_info->date}}</td>
-      <td style="padding: 5px; text-align: right;" colspan="2">Order No: {{$order_info->invoice_number}}</td>
+      <td style="padding: 5px;">Date: {{$cost_info->date}}</td>
+      <td style="padding: 5px; text-align: right;" colspan="2">Order No: {{$cost_info->invoice_number}}</td>
     </tr>
     <tr style="max-width: 500px;">
       <td>
@@ -25,36 +25,33 @@
       <td style="text-align: right;" colspan="2">
         <address style="padding-right: 10px;">
         <strong>Pay To:</strong><br />
-        Name: {{$supply_info->name}},<br />
-        Phone: {{$supply_info->phone}}, <br/>
-        @if ($supply_info->shop)
-          Shop Name: {{ $supply_info->shop }}
+        Name: {{$supplier_info->name}},<br />
+        Phone: {{$supplier_info->phone}}, <br/>
+        @if ($supplier_info->shop)
+          Shop Name: {{ $supplier_info->shop }}
         @endif, <br/>
-        Address: {{$supply_info->location}}<br />
+        Address: {{$supplier_info->location}}<br />
         </address>
       </td>
     </tr>
     <tr style="background: #816666;">
       <td style="padding-left: 10px;">Item Name</td>
-      <td style="padding-left: 10px;">Description</td>
       <td style="padding-left: 10px;">Quantity</td>
+      <td style="padding-left: 10px;">Price</td>
     </tr>
-    @foreach (json_decode($order_info->name) as $key => $value)
+    @foreach (json_decode($cost_info->name) as $key => $value)
       @php 
         $product_info = App\Models\SupplyGoods::find($value); 
-        $quantity = json_decode($order_info->quantity);
+        $quantity = json_decode($cost_info->quantity);
+        $amount = json_decode($cost_info->amount);
       @endphp
       <tr>
         <td style="padding-left: 20px;">{{$product_info->name}}</td>
-        <td style="padding-left: 20px;">{{$product_info->description}}</td>
         <td style="padding-left: 20px;">{{$quantity[$key]}}</td>
+        <td style="padding-left: 20px;">Tk. {{$amount[$key]}}</td>
       </tr>
     @endforeach
   </table>
 </div>
-<div class="btn-group btn-group-sm d-print-none p-2"> 
-  <a href="javascript:window.print()" class="btn btn-light border text-black-50 shadow-none m-2"><i class="fa fa-print"></i> Print</a> 
-  <a href="{{route('order-pdf', $order_info->id)}}" class="btn btn-light border text-black-50 shadow-none m-2"><i class="fa fa-download"></i> PDF</a>
-  <a href="{{route('make-order.edit', $order_info->id)}}" class="btn btn-light border text-black-50 shadow-none m-2"><i class="far fa-edit"></i> Edit</a>
-</div>
+<button class="btn btn-warning mt-3"> <a href="{{ url()->previous() }}">Return Back</a></button>
 @endsection
