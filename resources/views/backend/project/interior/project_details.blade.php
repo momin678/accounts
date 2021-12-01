@@ -152,7 +152,7 @@
                                         @php
                                             $supplier = \App\Models\Supplier::where('id', $payment->supplier_id)->select('name')->first();
                                         @endphp
-                                        <td><a href="#">{{ $supplier->name }}</a></td>
+                                        <td><a href="{{ route('supplier.index') }}">{{$supplier->name}}</a></td>
                                         <td>{{ $payment->date }}</td>
                                         <td>TK.{{ $payment->amount }}</td>
                                         <td>{{ $payment->method }}</td>

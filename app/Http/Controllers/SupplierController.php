@@ -58,7 +58,10 @@ class SupplierController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //
+        $supplier_info = $supplier;
+        $supply_value = Supplier::find($supplier->id)->supply_value;
+        $make_payment = Supplier::find($supplier->id)->make_payment;
+        return view('backend.project.interior.supplier_details', compact('supplier_info', 'supply_value', 'make_payment'));
     }
 
     /**

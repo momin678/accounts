@@ -9,4 +9,10 @@ class Supplier extends Model
 {
     use HasFactory;
     protected $table = 'suppliers';
+    public function supply_value(){
+        return $this->hasMany(Cost::class);
+    }
+    public function make_payment(){
+        return $this->hasMany(MakePayment::class);
+    }
 }

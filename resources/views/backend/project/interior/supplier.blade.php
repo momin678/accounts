@@ -35,15 +35,15 @@
 						</tr>
 					</thead>
 					<tbody>
-					    @foreach($all_supplier as $key => $supplier)
-					    <tr>
-					        <td><a href="{{ route('supplier.show', $supplier->id) }}">{{$supplier->name}}</a></td>
-					        <td>{{$supplier->phone}}</td>
-					        <td>{{$supplier->total_amount}}</td>
-					        <td>{{$supplier->paid_amount}}</td>
-					        <td>{{$supplier->total_amount-$supplier->paid_amount}}</td>
-					    </tr>
-					    @endforeach
+            @foreach($all_supplier as $key => $supplier)
+            <tr>
+              <td><a href="{{ route('supplier.show', $supplier->id) }}">{{$supplier->name}}</a></td>
+              <td>{{$supplier->phone}}</td>
+              <td>{{$supplier->total_amount}}</td>
+              <td>{{$supplier->paid_amount}}</td>
+              <td>{{$supplier->total_amount-$supplier->paid_amount}}</td>
+            </tr>
+            @endforeach
 					</tbody>
 				</table>
 			</div>
