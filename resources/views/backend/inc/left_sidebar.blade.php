@@ -33,7 +33,8 @@
           'get-payment.index', 'get-payment.create', 'get-payment.edit',
           'make-payment.index', 'make-payment.create', 'make-payment.edit',
           'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
-          'supplier.create','supplier.edit','supplier.index',
+          'supplier.create','supplier.edit','supplier.index','supplier.show',
+          'returned.create','returned.edit','return-store','return-check',
           'other-cost.create','other-cost.edit','other-cost.index',
           'project.cost.index', 'project.cost.create', 'project.cost.edit', 'project.cost.show'
           ])}}">
@@ -80,7 +81,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',])}}">
+              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','return-store','return-check',])}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>
@@ -110,7 +111,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('supplier.index')}}" class="nav-link {{ activeRoutesUlLi(['supplier.edit','supplier.index'])}}">
+                <a href="{{route('supplier.index')}}" class="nav-link {{ activeRoutesUlLi(['supplier.edit','supplier.index','supplier.show',])}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Supplier</p>
                 </a>

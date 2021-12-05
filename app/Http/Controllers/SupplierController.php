@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Supplier;
 use App\Models\Project;
 use Illuminate\Http\Request;
-
+use App\Models\Returned;
 class SupplierController extends Controller
 {
     /**
@@ -61,7 +61,8 @@ class SupplierController extends Controller
         $supplier_info = $supplier;
         $supply_value = Supplier::find($supplier->id)->supply_value;
         $make_payment = Supplier::find($supplier->id)->make_payment;
-        return view('backend.project.interior.supplier_details', compact('supplier_info', 'supply_value', 'make_payment'));
+        $return_info = Returned::where('supplier_id', $supplier->id)->get();
+        return view('backend.project.interior.supplier_details', compact('supplier_info', 'supply_value', 'make_payment', 'return_info'));
     }
 
     /**

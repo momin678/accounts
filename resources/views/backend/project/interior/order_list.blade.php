@@ -60,7 +60,7 @@
                         @if ($order->status == 0)
                            <a href="{{ route('order-check', $order->id) }}">Pandding</a> 
                         @else
-                           Complate
+                           Complate/ <a href="{{ route('return-check', $order->id) }}">Return</a>
                         @endif
                     </td>
                 </tr>

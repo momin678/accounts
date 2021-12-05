@@ -79,7 +79,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
     Route::resource('project/cost', 'CostController', ['names'=>'project.cost']);
     Route::resource('make-order', 'MakeOrderController', ['names'=>'make-order']);
     Route::resource('supplier', 'SupplierController', ['names'=>'supplier']);
+    Route::resource('returned', 'ReturnedController', ['names'=>'returned']);
     Route::resource('other-cost', 'OtherCostController', ['names'=>'other-cost']);
+    Route::get('return-check/{id}', 'ReturnedController@return_check')->name('return-check');
+    Route::post('return-store', 'ReturnedController@return_store')->name('return-store');
     Route::get('order-check/{id}', 'MakeOrderController@order_check')->name('order-check');
     Route::get('order-details/{id}', 'MakeOrderController@order_details')->name('order-details');
     Route::get('order-pdf/{id}', 'MakeOrderController@order_pdf')->name('order-pdf');
@@ -87,7 +90,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
     Route::get('project/spending/{id}', 'CostController@spending')->name('project.spending');
     Route::get('/supply-goods-search', 'CostController@supply_goods_search')->name('project.supply-goods-search');
 });
-// page route
+// page route 
 Route::get('contact-us', 'ContactController@contact')->name('contact-us');
 Route::post('contact/submit', 'ContactController@contact_submit')->name('contact-submit');
 
