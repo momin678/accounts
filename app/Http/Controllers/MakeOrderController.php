@@ -111,7 +111,11 @@ class MakeOrderController extends Controller
      */
     public function show(MakeOrder $makeOrder)
     {
-        
+        $order_info = MakeOrder::find($makeOrder->id);
+        $supply_info = Supplier::find($order_info->supplier_id);
+        $cost_info = Cost::where('invoice_number', $order_info->invoice_number)->first();
+        // dd($cost_info);
+        return view('backend/project/interior/order_details_from_list', compact('order_info', 'cost_info', 'supply_info'));
     }
 
     /**

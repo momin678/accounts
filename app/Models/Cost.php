@@ -17,4 +17,15 @@ class Cost extends Model
     {
         return $this->belongsTo(Project::class);
     }
+    public static function orderCost($invoice_number){
+        $orderCost = 0;
+        $all_cost = Cost::where('invoice_number', $invoice_number)->first();
+        if($all_cost){
+            foreach(json_decode($all_cost->amount) as $value){
+                $orderCost += $value;
+            }
+        }
+        return $orderCost;
+        
+    }
 }

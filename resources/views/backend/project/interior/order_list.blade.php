@@ -23,25 +23,30 @@
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
-            <h5 class="mb-md-0 h6">Development order List</h5>
+            <h5 class="mb-md-0 h6">Order List</h5>
         </div>
     </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped" >
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th width="20%" scope="col">Project Name</th>
-                    <th scope="col">Supplier Name</th>
                     <th scope="col">Date</th>
                     <th scope="col">Order Number</th>
+                    <th scope="col">Amount</th>
+                    <th width="20%" scope="col">Project Name</th>
+                    <th scope="col">Supplier Name</th>
                     <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($all_order as $order)
                 <tr>
-                    <td>{{$loop->index+1}}</td>
+                    @php
+                        $amount = App\Models\Cost::orderCost($order->invoice_number);
+                    @endphp
+                    <td><a href="{{ route('make-order.show', $order->id)}}">{{$order->date}}</a></td>
+                    <td><a href="{{ route('make-order.show', $order->id)}}">{{$order->invoice_number}}</a></td>
+                    <td>Tk. {{$amount}}</td>
                     <td>
                         @foreach ($all_project as $project)
                             @if ($order->project_id == $project->id)
@@ -56,8 +61,6 @@
                             @endif
                         @endforeach
                     </td>
-                    <td>{{$order->date}}</td>
-                    <td>{{$order->invoice_number}}</td>
                     <td>
                         @if ($order->status == 0)
                            <a href="{{ route('order-check', $order->id) }}">Pandding</a> 
