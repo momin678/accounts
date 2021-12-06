@@ -19,7 +19,7 @@ class MakeOrderController extends Controller
      */
     public function index()
     {
-        $all_order = MakeOrder::all();
+        $all_order = MakeOrder::orderBy('id', 'DESC')->get();
         $all_project = Project::all();
         $all_supplier = Supplier::all();
         return view('backend.project.interior.order_list', compact('all_order', 'all_project', 'all_supplier'));

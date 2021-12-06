@@ -7,7 +7,7 @@
 <div class="text-left mb-3">
     <div class="row align-items-center">
         <div class="col-auto">
-            <h1 class="h3">Goods Orders</h1>
+            <h1 class="h3">Make Orders</h1>
         </div>
     </div>
 </div>
@@ -24,6 +24,7 @@
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
+                        <label for="">Project Name</label>
                         <select class="form-control multiple_select" name="project_id" required>
                             <option value=""></option>
                             @foreach($all_project as $project)
@@ -32,6 +33,7 @@
                         </select>
                         </div>
                         <div class="form-group col-md-6">
+                        <label for="">Supplier Name</label>
                         <select class="form-control multiple_select" name="supplier_id" required>
                             <option value=""></option>
                             @foreach($all_supplier as $supplier)
