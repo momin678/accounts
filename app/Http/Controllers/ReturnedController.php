@@ -117,6 +117,6 @@ class ReturnedController extends Controller
         }
         $order->amount = json_encode($amounts);
         $order->save();
-        // return redirect()->route('order-details', ['id' => $order->id]);
+        return back()->with('success', 'Return add successful');
     }
 }

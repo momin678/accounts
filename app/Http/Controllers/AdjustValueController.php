@@ -41,7 +41,7 @@ class AdjustValueController extends Controller
         $values->description = $request->description;
         $values->date = date('Y-m-d');
         $values->save();
-        return back();
+        return back()->with('success', 'Values add successful');
     }
 
     /**

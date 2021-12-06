@@ -89,7 +89,7 @@ class OtherCostController extends Controller
         }
         $cost->document = json_encode($document);
         $cost->save();
-        return back();
+        return back()->with('success', 'Values add successful');
     }
 
     /**

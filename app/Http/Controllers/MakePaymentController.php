@@ -59,7 +59,7 @@ class MakePaymentController extends Controller
         }
         $makePayment->document = json_encode($document);
         $makePayment->save();
-        return back();
+        return back()->with('success', 'Make Payment successful');
     }
 
     /**

@@ -47,7 +47,7 @@ class SupplierController extends Controller
         $supplier->location = $request->location;
         $supplier->description = $request->description;
         $supplier->save();
-        return back();
+        return back()->with('success', 'Supplier create successful');
     }
 
     /**
