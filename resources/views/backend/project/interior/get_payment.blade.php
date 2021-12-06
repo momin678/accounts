@@ -19,6 +19,7 @@
     </div>
 </div>
 
+@include('errors.error_massege')
 <div class="row">
 	<div class="col-md-8">
 		<div class="card">

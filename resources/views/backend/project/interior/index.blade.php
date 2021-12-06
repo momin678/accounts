@@ -18,6 +18,7 @@
         </div>
     </div>
 </div>
+@include('errors.error_massege')
 <div class="card">
     <div class="card-header row gutters-5">
         <div class="col text-center text-md-left">
