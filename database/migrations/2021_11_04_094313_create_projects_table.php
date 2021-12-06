@@ -22,6 +22,7 @@ class CreateProjectsTable extends Migration
             $table->string('location')->nullable();
             $table->string('institution')->nullable();
             $table->date('expiration')->nullable();
+            $table->string('status')->nullable();
             $table->text('description')->nullable();
             $table->string('document')->nullable();
             $table->timestamps();

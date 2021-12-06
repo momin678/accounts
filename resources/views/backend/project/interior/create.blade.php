@@ -55,7 +55,12 @@
                         <label for="permissionApprove">Project Document</label>
                         <input type="file" class="form-control"  name='document[]' >
                     </div>
-                </div>
+                </div>                
+            </div>
+            <div>
+                <label for="" class="pr-3"> Project Status: </label>
+                <label class="radio-inline"> <input type="radio" name="status" value="Upcoming" required> Upcoming </label>
+                <label class="radio-inline"> <input type="radio" name="status" value="Rounning" required> Rounning </label>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Project Description</label>

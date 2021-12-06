@@ -27,6 +27,14 @@ class Project extends Model
         // return $this->hasManyThrough(Supplier::class, MakePayment::class);
         // return $this->belongsToMany(MakePayment::class, 'suppliers');
     }
+    public static function adjust_values($id){
+        $adjust_values = 0;
+        $values = AdjustValue::where('project_id', $id)->get();
+        foreach($values as $value){
+            $adjust_values += $value->amount;
+        }
+        return $adjust_values;
+    }
     public static function totalPayment($id){
         $total_payment = 0;
         $all_payment = GetPayment::where('project_id', $id)->get();

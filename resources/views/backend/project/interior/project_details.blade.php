@@ -20,6 +20,7 @@
                             @php
                                 $total_payment = App\Models\Project::totalPayment($project_info->id);
                                 $total_cost = App\Models\Project::totalCost($project_info->id);
+                                $adjust_values = App\Models\Project::adjust_values($project_info->id);
                             @endphp
                             <tbody>
                                 <tr>
@@ -32,7 +33,11 @@
                                 </tr>
                                 <tr>
                                     <td>Project Budget: </td>
-                                    <td>TK. {{ $project_info->budget }}</td>
+                                    <td>TK. {{ $project_info->budget +$adjust_values}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Adjust Budget: </td>
+                                    <td>TK. {{ $adjust_values }}</td>
                                 </tr>
                                 <tr>
                                     <td>Project Peyment: </td>
@@ -40,11 +45,11 @@
                                 </tr>
                                 <tr>
                                     <td>Project Cost: </td>
-                                    <td>TK. {{$project_info->budget - $total_payment}}</td>
+                                    <td>TK. {{$total_cost}}</td>
                                 </tr>
                                 <tr>
                                     <td>Project Due: </td>
-                                    <td>TK. {{$total_cost}}</td>
+                                    <td>TK. {{$project_info->budget - $total_payment}}</td>
                                 </tr>
                                 <tr>
                                     <td>Project Profite: </td>

@@ -74,6 +74,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
 // project route
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHistory']], function(){
     Route::resource('project', 'ProjectController', ['names'=>'project']);
+    Route::resource('adjust-value', 'AdjustValueController', ['names'=>'adjust-value']);
     Route::resource('get-payment', 'GetPaymentController', ['names'=>'get-payment']);
     Route::resource('make-payment', 'MakePaymentController', ['names'=>'make-payment']);
     Route::resource('project/cost', 'CostController', ['names'=>'project.cost']);

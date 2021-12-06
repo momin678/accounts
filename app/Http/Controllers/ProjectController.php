@@ -53,6 +53,7 @@ class ProjectController extends Controller
             }
         }
         $project->document = json_encode($document);
+        $project->status = $request->status;
         $project->description = $request->description;
         $project->save();
         return back()->with('success', 'Project create successful');
