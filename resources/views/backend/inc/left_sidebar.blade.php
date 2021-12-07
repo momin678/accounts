@@ -32,7 +32,7 @@
           'project.index', 'project.create', 'project.edit','project.get-payment', 'project.show',
           'get-payment.index', 'get-payment.create', 'get-payment.edit',
           'make-payment.index', 'make-payment.create', 'make-payment.edit',
-          'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check',
+          'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','make-order.show',
           'supplier.create','supplier.edit','supplier.index','supplier.show',
           'returned.create','returned.edit','return-store','return-check',
           'other-cost.create','other-cost.edit','other-cost.index',
@@ -81,7 +81,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','return-store','return-check',])}}">
+              <li class="nav-item {{ activeRoutesUl(['make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','return-store','return-check','make-order.show',])}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon far fa-circle"></i>
                   <p>

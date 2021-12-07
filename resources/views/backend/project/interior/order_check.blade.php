@@ -55,7 +55,7 @@
                                 <input type="text" name="quantity[]" class="form-control" required value="{{$quantity[$key]}}">
                             </div>
                             <div class="form-group col-md-3 col-10">
-                                <input type="number" name="amount[]" class="form-control" required placeholder="total price">
+                                <input type="number" name="amount[]" class="form-control amount" required placeholder="total price">
                             </div>
                             <div class="col-md-1 col-2">
                                 <button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
@@ -68,14 +68,18 @@
                             <input class="form-control autocomplete_field" type="text" name="name[]" data-type="name" id="name_00".$key placeholder="Item name">
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="text" name="quantity[]" class="form-control" placeholder="quantity">
+                            <input type="text" name="quantity[]" class="form-control" value="0">
                         </div>
                         <div class="form-group col-md-3 col-10">
-                            <input type="number" name="price[]" class="form-control" placeholder="total price">
+                            <input type="number" name="amount[]" class="form-control amount" placeholder="total price">
                         </div>
                         <div class="form-group col-md-1 col-2">
                             <button id="addRow" type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-8 col-8">Total Amount: </div>
+                        <div class="col-md-4 col-4"> TK.<span class="total_amount pl-2">00</span></div>
                     </div>
                     <div class="form-group">
                         <label for="permissionApprove">Order Document</label>
@@ -101,10 +105,10 @@
         addNew +=       '<input type="text" name="name[]" data-type="name" class="form-control autocomplete_field" id="name_'+id+'" placeholder="Product name" required>'
         addNew +=   '</div>'
         addNew +=    '<div class="form-group col-md-2">'
-        addNew +=        '<input type="text" name="quantity[]" class="form-control" required placeholder="quantity">'
+        addNew +=        '<input type="text" name="quantity[]" class="form-control" required value="0">'
         addNew +=    '</div>'
         addNew +=    '<div class="form-group col-md-3 col-10">'
-        addNew +=        '<input type="number" name="price[]" class="form-control" required placeholder="price">'
+        addNew +=        '<input type="number" name="amount[]" class="form-control amount" required placeholder="total price">'
         addNew +=    '</div>'
         addNew +=    '<div class="col-md-1 col-2">'
         addNew +=        '<button id="removeRow" type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>'
@@ -157,6 +161,14 @@ $(document).on('focus','.autocomplete_field',function(){
        }
    });
    
+});
+// total amount count
+$(document).on("change", ".amount", function() {
+    var sum = 0;
+    $(".amount").each(function(){
+        sum += +$(this).val();
+    });
+    $(".total_amount").html(sum);
 });
 </script>
 @endsection

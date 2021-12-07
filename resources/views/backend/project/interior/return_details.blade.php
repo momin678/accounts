@@ -53,5 +53,5 @@
     @endforeach
   </table>
 </div>
-<button class="btn btn-warning mt-3"> <a href="{{ url()->previous() }}">Return Back</a></button>
+<a href="{{ url()->previous() }}" class="btn btn-warning mt-3">Return Back</a>
 @endsection

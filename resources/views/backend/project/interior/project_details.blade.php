@@ -6,7 +6,7 @@
         <div class="col-md-12  tab-content">
             <nav>
                 <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="true">Project Info</a>
+                    <a class="nav-item nav-link active" id="information-tab" data-toggle="tab" href="#information" role="tab" aria-controls="information" aria-selected="true">Project Information</a>
                     <a class="nav-item nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
                 </div>
             </nav>
@@ -15,7 +15,7 @@
             <div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
                 <div class="row">
                     <div class="col-md-6 col-12">
-                        <p class="text-center text-success pt-2">Basic Information</p>
+                        <h4 class="text-center pt-2"><strong class="pr-2">Project Name: </strong><span class="text-success ">{{ $project_info->name }}</span></h4>
                         <table class="table table-sm table-bordered" cellspacing="0">
                             @php
                                 $total_payment = App\Models\Project::totalPayment($project_info->id);
@@ -24,27 +24,19 @@
                             @endphp
                             <tbody>
                                 <tr>
-                                    <td>Project Name: </td>
-                                    <td>{{ $project_info->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Location: </td>
-                                    <td>{{ $project_info->location }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Project Budget: </td>
+                                    <td>Project Values: </td>
                                     <td>TK. {{ $project_info->budget +$adjust_values}}</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td>Adjust Budget: </td>
                                     <td>TK. {{ $adjust_values }}</td>
-                                </tr>
+                                </tr> --}}
                                 <tr>
-                                    <td>Project Peyment: </td>
+                                    <td>Received Peyment: </td>
                                     <td>TK. {{ $total_payment }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Project Cost: </td>
+                                    <td>Project Expenses: </td>
                                     <td>TK. {{$total_cost}}</td>
                                 </tr>
                                 <tr>
@@ -56,21 +48,32 @@
                                     <td>TK. {{ $project_info->budget - $total_cost }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Project Location: </td>
+                                    <td>{{ $project_info->location }}</td>
+                                </tr>
+                                {{-- <tr>
                                     <td>Project Institution: </td>
                                     <td>{{ $project_info->institution }}</td>
-                                </tr>
+                                </tr> --}}
+                                @if ($project_info->start)
                                 <tr>
                                     <td>Project Start: </td>
                                     <td>{{ $project_info->start }}</td>
-                                </tr>
+                                </tr>  
+                                @endif
+                                @if ($project_info->expiration)
                                 <tr>
                                     <td>Project Expiration: </td>
                                     <td>{{ $project_info->expiration }}</td>
                                 </tr>
+                                @endif
+                                @if ($project_info->description)
                                 <tr>
                                     <td>Project Description: </td>
                                     <td>{{ $project_info->description }}</td>
-                                </tr>
+                                </tr>  
+                                @endif
+                                @if ($project_info->document)
                                 <tr>
                                     <td>Project Document: </td>
                                     <td>
@@ -81,6 +84,8 @@
                                         @endforeach
                                     </td>
                                 </tr>
+                                @endif
+                                
                             </tbody>
                         </table>
                     </div>
