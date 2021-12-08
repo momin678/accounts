@@ -36,7 +36,6 @@
                 <tr>
                     <th width="20%" scope="col">Name</th>
                     <th scope="col">Budget</th>
-                    <th scope="col">Adjust</th>
                     <th scope="col">Peyment</th>
                     <th scope="col">Due</th>
                     <th scope="col">Spending/Cost</th>
@@ -54,9 +53,8 @@
                     @endphp
                     <td><a href="{{ route('project.show', $project->id) }}">{{$project->name}}</a></td>
                     <td>TK. {{$project->budget+$adjust_values}}</td>
-                    <td>TK. {{$adjust_values}}</td>
                     <td>TK. {{$total_payment}}</td>
-                    <td>TK. {{$project->budget - $total_payment}}</td>
+                    <td>TK. {{($project->budget+$adjust_values) - $total_payment}}</td>
                     <td>TK. {{$total_cost}}</td>
                     <td>TK. {{($project->budget+$adjust_values) - $total_cost}}</td>
                     <td>{{ $project->status }}</td>

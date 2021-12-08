@@ -3,16 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::middleware(['middleware'=> 'PreventBackHistory'])->group(function(){
   Auth::routes(['verify' => true]);
 });
@@ -34,8 +24,9 @@ Route::get('/reset-password/{token}', 'Auth\ResetPasswordController@resetPasswor
 Route::post('/reset-password', 'Auth\ResetPasswordController@resetPasswordUpdate')->middleware('guest')->name('password.update');
 Route::get('social-login/{driver}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('social-login/{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
-
+// home route
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::view('welcome', 'welcome');
 // admin route
 Route::group(['prefix' =>'admin', 'middleware'=> ['isAdmin','auth', 'PreventBackHistory'] ], function(){
     Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
@@ -46,14 +37,12 @@ Route::group(['prefix' =>'admin', 'middleware'=> ['isAdmin','auth', 'PreventBack
     Route::post('/env_key_update', 'BusinessSettingsController@env_key_update')->name('env_key_update.update');
     Route::post('/newsletter/test/smtp', 'NewsletterController@testEmail')->name('test.smtp');
 });
-
 // user route
 Route::group(['prefix' =>'user', 'middleware'=> ['verified','isUser', 'auth', 'PreventBackHistory'] ], function(){
     Route::get('dashboard', 'UserController@index')->name('user.dashboard');
     Route::get('profile', 'UserController@profile')->name('user.profile');
     Route::get('settings', 'UserController@settings')->name('user.settings');
 });
-
 // staff with role and permission route
 Route::group(['prefix' =>'admin/staffs', 'middleware'=> ['isAdmin','auth', 'PreventBackHistory'] ], function(){
     Route::resource('staff', 'StaffController', ['names' => 'staff']);
@@ -63,7 +52,6 @@ Route::group(['prefix' =>'admin/staffs', 'middleware'=> ['isAdmin','auth', 'Prev
     Route::get('permission-group-edit/{id}', 'PermissionController@permission_group_edit')->name('permission-group-edit');
     Route::get('permission-group-delete/{id}', 'PermissionController@permission_group_delete')->name('permission-group-delete');
 });
-
 // Product, category, brand, attribute route
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHistory']], function(){
     Route::resource('product', 'ProductController', ['names' => 'product']);

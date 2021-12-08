@@ -24,7 +24,7 @@
                             @endphp
                             <tbody>
                                 <tr>
-                                    <td>Project Values: </td>
+                                    <td><b>Project Values:</b> </td>
                                     <td>TK. {{ $project_info->budget +$adjust_values}}</td>
                                 </tr>
                                 {{-- <tr>
@@ -32,23 +32,23 @@
                                     <td>TK. {{ $adjust_values }}</td>
                                 </tr> --}}
                                 <tr>
-                                    <td>Received Peyment: </td>
+                                    <td><b>Received Peyment:</b> </td>
                                     <td>TK. {{ $total_payment }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Project Expenses: </td>
+                                    <td><b>Project Expenses:</b> </td>
                                     <td>TK. {{$total_cost}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Project Due: </td>
-                                    <td>TK. {{$project_info->budget - $total_payment}}</td>
+                                    <td><b>Project Due:</b> </td>
+                                    <td>TK. {{($project_info->budget+$adjust_values) - $total_payment}}</td>
                                 </tr>
                                 <tr>
-                                    <td>Project Profite: </td>
-                                    <td>TK. {{ $project_info->budget - $total_cost }}</td>
+                                    <td><b>Project Profite:</b> </td>
+                                    <td>TK. {{ ($project_info->budget+$adjust_values) - $total_cost }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Project Location: </td>
+                                    <td><b>Project Location:</b> </td>
                                     <td>{{ $project_info->location }}</td>
                                 </tr>
                                 {{-- <tr>
@@ -57,25 +57,25 @@
                                 </tr> --}}
                                 @if ($project_info->start)
                                 <tr>
-                                    <td>Project Start: </td>
+                                    <td><b>Project Start:</b> </td>
                                     <td>{{ $project_info->start }}</td>
                                 </tr>  
                                 @endif
                                 @if ($project_info->expiration)
                                 <tr>
-                                    <td>Project Expiration: </td>
+                                    <td><b>Project Expiration:</b> </td>
                                     <td>{{ $project_info->expiration }}</td>
                                 </tr>
                                 @endif
                                 @if ($project_info->description)
                                 <tr>
-                                    <td>Project Description: </td>
+                                    <td><b>Project Description:</b> </td>
                                     <td>{{ $project_info->description }}</td>
                                 </tr>  
                                 @endif
                                 @if ($project_info->document)
                                 <tr>
-                                    <td>Project Document: </td>
+                                    <td><b>Project Document:</b> </td>
                                     <td>
                                         @foreach (json_decode($project_info->document) as $file)
                                             @if ($file)

@@ -18,7 +18,7 @@
         145 Motijheel C/A,<br />
         Dhaka - 1000,
       </div>
-      <div class="float-right col-12 col-md-6 justify-content" style="float: right;">
+      <div class="col-12 col-md-6 text-right">
         <label for="">To:</label><br>
         <b>{{$supply_info->name}}</b>,<br/>
         Phone: {{$supply_info->phone}}, <br/>

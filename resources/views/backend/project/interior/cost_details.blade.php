@@ -37,19 +37,31 @@
       <td style="padding-left: 10px;">Quantity</td>
       <td style="padding-left: 10px;">Price</td>
     </tr>
+    @php
+        $total_amount = 0;
+    @endphp
     @foreach (json_decode($cost_info->name) as $key => $value)
       @php 
         $product_info = App\Models\SupplyGoods::find($value); 
         $quantity = json_decode($cost_info->quantity);
         $amount = json_decode($cost_info->amount);
+        $total_amount += $amount[$key];
       @endphp
       <tr>
         <td style="padding-left: 20px;">{{$key+1}}</td>
         <td style="padding-left: 20px;">{{$product_info->name}}</td>
-        <td style="padding-left: 20px;">{{$quantity[$key]}}</td>
+        <td style="padding-left: 20px;">
+          @if (array_key_exists($key, $quantity))
+            {{ $quantity[$key] }}
+          @endif
+        </td>
         <td style="padding-left: 20px;">Tk. {{$amount[$key]}}</td>
       </tr>
     @endforeach
+    <tr >
+      <td colspan="3" style="padding: 20px"><b>Total Amount:</b> </td>
+      <td style="padding: 20px"><b>Tk. {{ $total_amount }}</b> </td>
+    </tr>
   </table>
 </div>
 <a href="{{ url()->previous() }}" class="btn btn-warning mt-3">Return Back</a>

@@ -38,12 +38,16 @@
       <td style="padding-left: 10px;">Quantity</td>
       <td style="padding-left: 10px;">Price</td>
     </tr>
+    @php
+        $total_amount = 0;
+    @endphp
     @foreach (json_decode($order_info->name) as $key => $value)
       @php 
         $product_info = App\Models\SupplyGoods::find($value); 
         $quantity = json_decode($order_info->quantity);
         if($cost_info){
-          $costs = json_decode($cost_info->amount);
+          $costs = json_decode($cost_info->amount);          
+          $total_amount += $costs[$key];
         }else {
           $costs = [];
         }
@@ -61,6 +65,10 @@
         </td>
       </tr>
     @endforeach
+    <tr >
+      <td colspan="4" style="padding: 20px"><b>Total Amount:</b> </td>
+      <td style="padding: 20px"><b>Tk. {{ $total_amount }}</b> </td>
+    </tr>
   </table>
 </div>
 <a href="{{ url()->previous() }}" class="btn btn-warning mt-3">Return Back</a>

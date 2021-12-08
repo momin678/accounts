@@ -12,7 +12,7 @@
   </head>
   <body>
     <div style="padding: 10px; border: 1px solid rgb(192, 164, 164); font-size: 18px; line-height: 24px;">
-      <div style="width: 100%; line-height: inherit; text-align: left;">
+      <div style="width: 100%; line-height: inherit; text-align: left; min-height: 310px;">
         <div class="text-center h2">
           Work Order
         </div>
@@ -21,16 +21,16 @@
           <span class="float-right">Order No: {{$order_info->invoice_number}}</span>
         </div>
         <div class='row p-2'>
-          <div class="col-md-6 col-12">
-            <label for="">From:</label><br>
+          <div style="max-width: 450px; min-width: 350px;" class="p-2">
+            From:<br>
             <b>Nazaha Intorior and Architecture</b>,<br />
             Phone: 01744-333320,<br />
             Address: Saleh Sadan, Fourth Floor,  <br />
             145 Motijheel C/A,<br />
             Dhaka - 1000,
           </div>
-          <div class="float-right col-12 col-md-6 justify-content">
-            <label for="">To:</label><br>
+          <div class="float-right text-right" style="max-width: 250px; min-width: 150px;">
+            To:<br>
             <b>{{$supply_info->name}}</b>,<br/>
             Phone: {{$supply_info->phone}}, <br/>
             @if ($supply_info->shop)
