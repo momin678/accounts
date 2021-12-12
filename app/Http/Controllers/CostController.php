@@ -119,7 +119,7 @@ class CostController extends Controller
             }
         }
         $cost->document = json_encode($document);
-        dd($cost);
+        // dd($cost);
         $complate = $cost->save();
         if($complate){
             $order_info = MakeOrder::find($request->order_id);
