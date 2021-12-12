@@ -68,7 +68,7 @@
                             <input class="form-control autocomplete_field" type="text" name="name[]" data-type="name" id="name_00".$key placeholder="Item name">
                         </div>
                         <div class="form-group col-md-2">
-                            <input type="text" name="quantity[]" class="form-control" value="0">
+                            <input type="text" name="quantity[]" class="form-control">
                         </div>
                         <div class="form-group col-md-3 col-10">
                             <input type="number" name="amount[]" class="form-control amount" placeholder="total price">
@@ -105,7 +105,7 @@
         addNew +=       '<input type="text" name="name[]" data-type="name" class="form-control autocomplete_field" id="name_'+id+'" placeholder="Product name" required>'
         addNew +=   '</div>'
         addNew +=    '<div class="form-group col-md-2">'
-        addNew +=        '<input type="text" name="quantity[]" class="form-control" required value="0">'
+        addNew +=        '<input type="text" name="quantity[]" class="form-control" required>'
         addNew +=    '</div>'
         addNew +=    '<div class="form-group col-md-3 col-10">'
         addNew +=        '<input type="number" name="amount[]" class="form-control amount" required placeholder="total price">'

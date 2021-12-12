@@ -88,7 +88,9 @@ class CostController extends Controller
           foreach($request->quantity as $quantity){
               if($quantity){
                 $quantities[] = $quantity;
-              }                
+              }else{
+                $quantities[] = "1";
+              }
             }
         }
         $cost->quantity = json_encode($quantities);
@@ -117,6 +119,7 @@ class CostController extends Controller
             }
         }
         $cost->document = json_encode($document);
+        dd($cost);
         $complate = $cost->save();
         if($complate){
             $order_info = MakeOrder::find($request->order_id);
