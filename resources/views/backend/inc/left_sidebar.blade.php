@@ -28,16 +28,77 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item {{ activeRoutesLi(['role.index', 'role.create', 'role.edit', 'permission.index', 'permission.create', 'permission.edit'])}}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p> Our Staffs<i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview" {{ activeRoutesUl(['role.index', 'role.create', 'role.edit', 'permission.index', 'permission.create', 'permission.edit', 'staff.index', 'staff.create', 'staff.edit']) }}>
+              @if(Auth::user()->user_type == 'admin' || array_intersect([1,2,3,4,5], $totalPermissnion))
+              <li class="nav-item" >
+                <a href="{{route('staff.index')}}" class="nav-link {{ activeRoutesUlLi(['staff.index', 'staff.create', 'staff.edit'])}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Staff</p>
+                </a>
+              </li>
+               @endif
+               @if(Auth::user()->user_type == 'admin' || array_intersect([6,7,8,9,10], $totalPermissnion))
+              <li class="nav-item click_li">
+                <a href="{{route('role.index')}}" class="nav-link {{ activeRoutesUlLi(['role.index', 'role.create', 'role.edit'])}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Roles</p>
+                </a>
+              </li>
+              @endif
+              @if(Auth::user()->user_type == 'admin' || array_intersect([29, 30, 31, 32, 33], $totalPermissnion))
+              <li class="nav-item click_li">
+                <a href="{{route('permission.index')}}" class="nav-link {{ activeRoutesUlLi(['permission.index', 'permission.create', 'permission.edit'])}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Permission</p>
+                </a>
+              </li>
+              @endif
+            </ul>
+          </li>
+          <li class="nav-item {{ activeRoutesLi(['employee-salary.index', 'office-expenses.employee-salary', 'office-expenses.employee-salary']) }}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon  fab fa-accusoft"></i>
+              <p>
+                Office Expenses
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('employee-salary.index') }}" class="nav-link {{ activeRoutesUlLi(['employee-salary.index']) }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Salary</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/forms/advanced.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Office Rent</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/forms/editors.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Others Cost</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item {{ activeRoutesLi([
-          'project.index', 'project.create', 'project.edit','project.get-payment', 'project.show',
-          'get-payment.index', 'get-payment.create', 'get-payment.edit',
-          'make-payment.index', 'make-payment.create', 'make-payment.edit',
-          'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','make-order.show',
-          'supplier.create','supplier.edit','supplier.index','supplier.show',
-          'returned.create','returned.edit','return-store','return-check',
-          'other-cost.create','other-cost.edit','other-cost.index',
-          'project.cost.index', 'project.cost.create', 'project.cost.edit', 'project.cost.show'
-          ])}}">
+            'project.index', 'project.create', 'project.edit','project.get-payment', 'project.show',
+            'get-payment.index', 'get-payment.create', 'get-payment.edit',
+            'make-payment.index', 'make-payment.create', 'make-payment.edit',
+            'make-order.index', 'make-order.create', 'make-order.edit', 'order-details', 'order-check','make-order.show',
+            'supplier.create','supplier.edit','supplier.index','supplier.show',
+            'returned.create','returned.edit','return-store','return-check',
+            'other-cost.create','other-cost.edit','other-cost.index',
+            'project.cost.index', 'project.cost.create', 'project.cost.edit', 'project.cost.show'
+            ])}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-project-diagram"></i>
               <p>
@@ -120,67 +181,6 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fas fa-gavel"></i>
-              <p>
-                Teders
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="nav-icon far fa-circle nav-icon"></i>
-                  <p>New Project</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Project List</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/tables/jsgrid.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Office expenses</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item {{ activeRoutesLi(['role.index', 'role.create', 'role.edit', 'permission.index', 'permission.create', 'permission.edit'])}}">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p> Our Staffs<i class="fas fa-angle-left right"></i></p>
-            </a>
-            <ul class="nav nav-treeview" {{ activeRoutesUl(['role.index', 'role.create', 'role.edit', 'permission.index', 'permission.create', 'permission.edit', 'staff.index', 'staff.create', 'staff.edit']) }}>
-              @if(Auth::user()->user_type == 'admin' || array_intersect([1,2,3,4,5], $totalPermissnion))
-              <li class="nav-item" >
-                <a href="{{route('staff.index')}}" class="nav-link {{ activeRoutesUlLi(['staff.index', 'staff.create', 'staff.edit'])}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Staff</p>
-                </a>
-              </li>
-               @endif
-               @if(Auth::user()->user_type == 'admin' || array_intersect([6,7,8,9,10], $totalPermissnion))
-              <li class="nav-item click_li">
-                <a href="{{route('role.index')}}" class="nav-link {{ activeRoutesUlLi(['role.index', 'role.create', 'role.edit'])}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Roles</p>
-                </a>
-              </li>
-              @endif
-              @if(Auth::user()->user_type == 'admin' || array_intersect([29, 30, 31, 32, 33], $totalPermissnion))
-              <li class="nav-item click_li">
-                <a href="{{route('permission.index')}}" class="nav-link {{ activeRoutesUlLi(['permission.index', 'permission.create', 'permission.edit'])}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Permission</p>
-                </a>
-              </li>
-              @endif
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Products
@@ -216,6 +216,58 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
+              <i class="fas fa-gavel"></i>
+              <p>
+                Teders
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="nav-icon far fa-circle nav-icon"></i>
+                  <p>New Project</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Project List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/tables/jsgrid.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Office expenses</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item  {{ activeRoutesLi(['employees.index', 'employees.create', 'employees.edit', 'employees.show']) }}">
+            <a href="#" class="nav-link">
+              <i class="fas fa-user-friends"></i>
+              <p>
+                Employees
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('employees.index') }}" class="nav-link {{ activeRoutesUlLi(['employees.index', 'employees.edit', 'employees.show']) }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Employee</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('employees.create') }}" class="nav-link {{ activeRoutesUlLi(['employees.create']) }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>New Employee</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
               <i class="fas fa-cogs"></i>
               <p>
                 Setup & Configurations
@@ -235,80 +287,9 @@
                   <p>Social Login</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/UI/buttons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/sliders.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/modals.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/navbar.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/timeline.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/UI/ribbons.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
-                </a>
-              </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Forms
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
@@ -711,7 +692,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
