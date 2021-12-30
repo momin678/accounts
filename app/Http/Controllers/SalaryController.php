@@ -44,6 +44,7 @@ class SalaryController extends Controller
         $salary->month = $request->month;
         $salary->amount = $request->amount;
         $salary->method = $request->method;
+        $salary->date = $request->date;
         $salary->save();
         return back()->with('success', 'Salary add successful');
     }

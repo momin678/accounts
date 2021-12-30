@@ -73,7 +73,16 @@
             </div>
             <div class="form-group">
                 <label for="name">Month</label>
-                <input type="month" name="month" class="form-control" required id="txtMonth">
+                <select name="month" class="form-control">
+                  @php
+                      use Carbon\CarbonPeriod;
+                  @endphp
+                  @foreach(CarbonPeriod::create(now()->startOfMonth(), '1 month', now()->addMonths(11)->startOfMonth()) as $date)
+                      <option value="{{ $date->format('F') }}">
+                        {{ $date->format('F') }}
+                      </option>
+                  @endforeach
+              </select>
             </div>
             <div class="form-group">
                 <label for="name">Payment Amount <small>number only</small></label>
@@ -88,6 +97,10 @@
                     <option value="Nagad">Nagad</option>
                     <option value="Roket">Roket</option>
                 </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" value="<?php echo date('Y-m-d'); ?>" name="date" class="form-control"/>
             </div>
             <div class="form-group mb-3 text-right">
                 <button type="submit" class="btn btn-primary">Save</button>

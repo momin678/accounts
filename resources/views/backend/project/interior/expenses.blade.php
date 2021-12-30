@@ -1,6 +1,5 @@
 @extends('backend.layouts.app')
 @section('css')
-@endsection
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @section('content')
@@ -110,44 +109,40 @@
 </script>
 <script type="text/javascript">
     var route = "{{ route('project.supply-goods-search') }}";
-
-//autocomplete script
-$(document).on('focus','.autocomplete_field',function(){
-  type = $(this).data('type');
-  
-  if(type =='name' )autoType='name';
-  
-   $(this).autocomplete({
-       minLength: 0,
-       source: function( request, response ) {
-            $.ajax({
-                url: "{{ route('project.supply-goods-search') }}",
-                dataType: "json",
-                data: {
-                    term : request.term,
-                    type : type,
-                },
-                success: function(data) {
-                    var array = $.map(data, function (item) {
-                       return {
-                           label: item[autoType],
-                           value: item[autoType],
-                           data : item
-                       }
-                   });
-                    response(array)
-                }
-            });
-       },
-       select: function( event, ui ) {
-           var data = ui.item.data;           
-           id_arr = $(this).attr('id');
-           id = id_arr.split("_");
-           elementId = id[id.length-1];
-           $('#name_'+elementId).val(data.name);
-       }
-   });
-   
-});
+    //autocomplete script
+    $(document).on('focus','.autocomplete_field',function(){
+    type = $(this).data('type');    
+    if(type =='name' )autoType='name';    
+        $(this).autocomplete({
+            minLength: 0,
+            source: function( request, response ) {
+                    $.ajax({
+                        url: "{{ route('project.supply-goods-search') }}",
+                        dataType: "json",
+                        data: {
+                            term : request.term,
+                            type : type,
+                        },
+                        success: function(data) {
+                            var array = $.map(data, function (item) {
+                            return {
+                                label: item[autoType],
+                                value: item[autoType],
+                                data : item
+                            }
+                        });
+                            response(array)
+                        }
+                    });
+            },
+            select: function( event, ui ) {
+                var data = ui.item.data;           
+                id_arr = $(this).attr('id');
+                id = id_arr.split("_");
+                elementId = id[id.length-1];
+                $('#name_'+elementId).val(data.name);
+            }
+        });    
+    });
 </script>
 @endsection

@@ -66,6 +66,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHi
 // office expenses route
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHistory']], function(){
     Route::resource('employee-salary', 'SalaryController', ['names'=>'employee-salary']);
+    Route::resource('office-expenses', 'OfficeExpensesController', ['names'=>'office-expenses']);
 });
 // project route
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth', 'PreventBackHistory']], function(){

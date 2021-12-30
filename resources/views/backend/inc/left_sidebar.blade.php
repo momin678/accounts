@@ -60,34 +60,13 @@
               @endif
             </ul>
           </li>
-          <li class="nav-item {{ activeRoutesLi(['employee-salary.index', 'office-expenses.employee-salary', 'office-expenses.employee-salary']) }}">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ activeRoutesLi(['office-expenses.index']) }}">
+            <a href="{{ route('office-expenses.index') }}" class="nav-link">
               <i class="nav-icon  fab fa-accusoft"></i>
               <p>
                 Office Expenses
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('employee-salary.index') }}" class="nav-link {{ activeRoutesUlLi(['employee-salary.index']) }}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Salary</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Office Rent</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Others Cost</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item {{ activeRoutesLi([
             'project.index', 'project.create', 'project.edit','project.get-payment', 'project.show',
@@ -253,15 +232,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('employees.index') }}" class="nav-link {{ activeRoutesUlLi(['employees.index', 'employees.edit', 'employees.show']) }}">
+                <a href="{{ route('employees.index') }}" class="nav-link {{ activeRoutesUlLi(['employees.index', 'employees.edit', 'employees.show', 'employee-salary.index']) }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Employee</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('employees.create') }}" class="nav-link {{ activeRoutesUlLi(['employees.create']) }}">
+                <a href="{{ route('employee-salary.index') }}" class="nav-link {{ activeRoutesUlLi(['employee-salary.index']) }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>New Employee</p>
+                  <p>Pay Salary</p>
                 </a>
               </li>
             </ul>
