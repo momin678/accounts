@@ -2,7 +2,7 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-@section('content')
+@endsection
 @section('content')
 <div class="text-left mb-3 m-4">
     <div class="row align-items-center">
