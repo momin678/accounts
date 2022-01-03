@@ -59,7 +59,8 @@ class OfficeExpensesController extends Controller
                 $expenses->amount = $request->amount[$key];
                 $expenses->save();
             }
-            return back()->with('success', 'Expenses add successful');
+            flash()->overlay('You are now a Laracasts member!', 'Yay');
+            return back();
         }
     }
 
@@ -106,5 +107,9 @@ class OfficeExpensesController extends Controller
     public function destroy(OfficeExpenses $officeExpenses)
     {
         //
+    }
+    public function search_expenses(Request $request){
+        $expenses = OfficeExpenses::where('month', $request->month)->where('date', $request->date)->get();
+        return view('backend.expenses.expenses_details', compact('expenses', 'request'));
     }
 }

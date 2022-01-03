@@ -9,4 +9,8 @@ class OfficeExpenses extends Model
 {
     use HasFactory;
     protected $table = 'office_expenses';
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

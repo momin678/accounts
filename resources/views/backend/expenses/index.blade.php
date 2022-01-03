@@ -11,67 +11,101 @@
         </div>
     </div>
 </div>
-<div class="col-md-7">
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0 h6">Expenses</h5>
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0 h6">Expenses</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('office-expenses.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="form-group col-md-4 col-12">
+                            <label for="name">Month</label>
+                            <select name="month" class="form-control">
+                                @php
+                                    use Carbon\CarbonPeriod;
+                                @endphp
+                                @foreach(CarbonPeriod::create(now()->startOfMonth(), '1 month', now()->addMonths(11)->startOfMonth()) as $date)
+                                    <option value="{{ $date->format('F') }}">
+                                        {{ $date->format('F') }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-12">
+                            <label for="date">Date</label>
+                            <input type="date" value="<?php echo date('Y-m-d'); ?>" name="date" class="form-control"/>                
+                        </div>
+                        <div class="form-group  col-md-4 col-12">
+                            <label for="name">Payment Method</label>
+                            <select class="form-control" name="method" required>
+                                <option value="Cahs-on">Cahs-on</option>
+                                <option value="Check">Check</option>
+                                <option value="bKash">bKash</option>
+                                <option value="Nagad">Nagad</option>
+                                <option value="Roket">Roket</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="form-group">
+                            <input class="form-control autocomplete_field" type="text" name="name[]" data-type="name" id="name_1" placeholder="Product name" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <input type="text" name="quantity[]" class="form-control" required placeholder="product quantity">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <input type="text" name="amount[]" class="form-control" required placeholder="product price">
+                        </div>
+                        <div class="form-group col-md-1 col-2">
+                            <button id="addRow" type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                    <div id="newRow"></div>
+                    <div class="form-group mb-3 text-right">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="card-body">
-    <form action="{{ route('office-expenses.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="row">
-            <div class="form-group col-md-4 col-12">
-                <label for="name">Month</label>
-                <select name="month" class="form-control">
-                    @php
-                        use Carbon\CarbonPeriod;
-                    @endphp
-                    @foreach(CarbonPeriod::create(now()->startOfMonth(), '1 month', now()->addMonths(11)->startOfMonth()) as $date)
-                        <option value="{{ $date->format('F') }}">
-                            {{ $date->format('F') }}
-                        </option>
-                    @endforeach
-                </select>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header"> Search Office Expenses</div>
+            <div class="card-body">
+                <form action="{{ route('search-expenses') }}" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-5 col-12">
+                            <label for="name">Month</label>
+                            <select name="month" class="form-control">
+                                @foreach(CarbonPeriod::create(now()->startOfMonth(), '1 month', now()->addMonths(11)->startOfMonth()) as $date)
+                                    <option value="{{ $date->format('F') }}">
+                                        {{ $date->format('F') }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>                    
+                        <div class="form-group col-md-7 col-12">
+                            <label for="date">Date</label>
+                            <input type="date" value="" name="date" class="form-control"/>                
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 text-right">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group col-md-4 col-12">
-                <label for="date">Date</label>
-                <input type="date" value="<?php echo date('Y-m-d'); ?>" name="date" class="form-control"/>                
-            </div>
-            <div class="form-group  col-md-4 col-12">
-                <label for="name">Payment Method</label>
-                <select class="form-control" name="method" required>
-                    <option value="Cahs-on">Cahs-on</option>
-                    <option value="Check">Check</option>
-                    <option value="bKash">bKash</option>
-                    <option value="Nagad">Nagad</option>
-                    <option value="Roket">Roket</option>
-                </select>
-            </div>
-        </div>
-        <div >
-            <div class="form-group">
-                <input class="form-control autocomplete_field" type="text" name="name[]" data-type="name" id="name_1" placeholder="Product name" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-5">
-                <input type="text" name="quantity[]" class="form-control" required placeholder="product quantity">
-            </div>
-            <div class="form-group col-md-5">
-                <input type="text" name="amount[]" class="form-control" required placeholder="product price">
-            </div>
-            <div class="form-group col-md-1 col-2">
-                <button id="addRow" type="button" class="btn btn-info"><i class="fas fa-plus"></i></button>
-            </div>
-        </div>
-        <div id="newRow"></div>
-        <div class="form-group mb-3 text-right">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
-    </form>
+                
         </div>
     </div>
 </div>
+
+
 @endsection
 @section('js')
 <script type="text/javascript">

@@ -28,6 +28,10 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
   <!-- select2 -->
   <link rel="stylesheet" href="{{asset('assets/select2.min.css')}}">
+  {{-- flash notification --}}
+  <script>
+    var ADM = ADM || {};        
+  </script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
@@ -62,9 +66,9 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
+{{-- <script>
   $.widget.bridge('uibutton', $.ui.button)
-</script>
+</script> --}}
 <!-- Bootstrap 4 -->
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
@@ -93,15 +97,23 @@
 <script src="{{asset('assets/dist/js/pages/dashboard.js') }}"></script>
 <!--select2-->
 <script src="{{asset('assets/select2.min.js') }}"></script>
+<script src="{{asset('assets/notification.js') }}"></script>
+<script src="{{asset('assets/AccountDatagateCore.js') }}"></script>
 <script>
-    $(document).ready(function() {
-        $('.multiple_select').select2({
-            placeholder: "Select a Option",
-            allowClear: true,
-            theme: "classic",
-            closeOnSelect: true
-        });
-    });
+  $(document).ready(function() {
+      $('.multiple_select').select2({
+          placeholder: "Select a Option",
+          allowClear: true,
+          theme: "classic",
+          closeOnSelect: true
+      });
+  });
+</script>
+  {{-- flash notification --}}
+ <script> 
+  @foreach (session('flash_notification', collect())->toArray() as $message)
+	  ADM.plugins.notification('{{ $message['level'] }}', '{{ $message['message'] }}');
+	@endforeach
 </script>
 @yield('js')
 </body>
