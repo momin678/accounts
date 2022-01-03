@@ -13,13 +13,18 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::middleware(['middleware'=> 'PreventBackHistory'])->group(function(){
+  Auth::routes(['verify' => true]);
+});
 Route::middleware(['middleware'=> 'PreventBackHistory'])->group(function(){
   Auth::routes(['verify' => true]);
 });
 Route::group(['prefix'=>'admin', 'middleware'=>['web']], function(){
-    Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings');
+  Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings');
 });
-
-    // Route::get('/smtp-settings', 'BusinessSettingsController@smtp_settings')->name('smtp_settings');
+Route::group(['prefix'=>'admin','middleware'=> ['isAdmin','auth', 'PreventBackHistory']], function(){
+  Route::resource('category', 'CategoryController', ['names' => 'category']);
+  Route::delete('cat_delete', "CategoryController@cat_delete")->name('admin.category-delete');
+  Route::post('/category/featured', 'CategoryController@updateActive')->name('admin.category.active');
+});
 

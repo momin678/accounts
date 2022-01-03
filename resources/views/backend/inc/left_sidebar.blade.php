@@ -158,7 +158,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ activeRoutesLi(['category.index', 'category.create', 'category.edit', 'category.show', ]) }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -174,7 +174,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ route('category.index') }}" class="nav-link {{ activeRoutesUlLi(['category.index']) }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categoey</p>
                 </a>
