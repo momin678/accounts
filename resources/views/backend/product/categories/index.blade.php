@@ -59,7 +59,7 @@
     .slider.round:before {
       border-radius: 50%;
     }
-    </style>
+</style>
 @section('content')
 <div class="text-left mt-2 mb-3">
     <div class="row align-items-center">
@@ -119,9 +119,6 @@
                           @endif
                       </td>
                       <td>
-                          {{-- <label class="mb-0 ">
-                            <input type="checkbox" value="{{$category->id}}" onchange="update_active(this)" name="my-checkbox" {{$category->status == 1 ? 'checked' : 'unchecked' }} data-bootstrap-switch data-off-color="danger" data-on-color="success">
-                          </label> --}}
                           <label class="switch">
                             <input type="checkbox" value="{{$category->id}}" onchange="update_active(this)" name="my-checkbox" {{$category->status == 1 ? 'checked' : '' }}>
                             <span class="slider round"></span>
@@ -195,9 +192,9 @@
   $("input[data-bootstrap-switch]").each(function(){
       $(this).bootstrapSwitch('state', $(this).prop('checked'));
     })
-    $(document).on('click','.delete',function(){
-         let id = $(this).attr('data-id');
-         $('#id').val(id);
-    });
+  $(document).on('click','.delete',function(){
+    let id = $(this).attr('data-id');
+    $('#id').val(id);
+  });
 </script>
 @endsection

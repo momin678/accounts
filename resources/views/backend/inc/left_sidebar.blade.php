@@ -158,7 +158,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{ activeRoutesLi(['category.index', 'category.create', 'category.edit', 'category.show', ]) }}">
+          <li class="nav-item {{ activeRoutesLi(['category.index', 'category.create', 'category.edit', 'brand.index', 'brand.edit' ]) }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -174,13 +174,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('category.index') }}" class="nav-link {{ activeRoutesUlLi(['category.index']) }}">
+                <a href="{{ route('category.index') }}" class="nav-link {{ activeRoutesUlLi(['category.index', 'category.edit','category.create',]) }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Categoey</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="{{ route('brand.index') }}" class="nav-link {{ activeRoutesUlLi(['brand.index', 'brand.edit']) }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Brand</p>
                 </a>
