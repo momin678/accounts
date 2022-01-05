@@ -66,9 +66,9 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-{{-- <script>
+<script>
   $.widget.bridge('uibutton', $.ui.button)
-</script> --}}
+</script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- ChartJS -->
@@ -110,6 +110,8 @@
   });
 </script>
   {{-- flash notification --}}
+  <script src="{{asset('assets/js/jquery.tagsinput-revisited.js') }}"></script>
+  <script src="https://cdn.tiny.cloud/1/8rq33slbav95jt7iqrx9b3ou4yukepv1zq6qxhpsjvwvn13u/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
  <script> 
   @foreach (session('flash_notification', collect())->toArray() as $message)
 	  ADM.plugins.notification('{{ $message['level'] }}', '{{ $message['message'] }}');

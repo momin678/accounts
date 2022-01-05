@@ -29,5 +29,8 @@ Route::group(['prefix'=>'admin','middleware'=> ['isAdmin','auth', 'PreventBackHi
   Route::resource('brand', 'BrandController', ['names' => 'brand']);
   Route::delete('brand_delete', "BrandController@brand_delete")->name('admin.brand-delete');
   Route::post('/brand/featured', 'BrandController@updateActive')->name('admin.brand.active');
+  Route::resource('product', 'ProductController', ['names' => 'product']);
+  Route::delete('product_delete', "ProductController@product_delete")->name('admin.product-delete');
+  Route::post('/product/featured', 'ProductController@updateActive')->name('admin.product.active');
 });
 

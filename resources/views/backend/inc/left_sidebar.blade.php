@@ -158,7 +158,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item {{ activeRoutesLi(['category.index', 'category.create', 'category.edit', 'brand.index', 'brand.edit' ]) }}">
+          <li class="nav-item {{ activeRoutesLi(['category.index', 'category.create', 'category.edit', 'brand.index', 'brand.edit','product.index', 'product.edit', 'product.create' ]) }}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
@@ -168,7 +168,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ route('product.index') }}" class="nav-link {{ activeRoutesUlLi(['product.index', 'product.edit', 'product.create']) }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Product</p>
                 </a>
