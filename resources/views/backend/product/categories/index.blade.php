@@ -1,9 +1,6 @@
 @extends('backend.layouts.app')
 @section('css')
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' ) }}">
-  <link rel="stylesheet" href="{{asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' ) }}">
-  <link rel="stylesheet" href="{{asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' ) }}">
+<link rel="stylesheet" href="{{asset('assets/responsive-table/css/footable.core.css')}}">
 @endsection
 <style>
     .switch {
@@ -87,67 +84,68 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group mb-0">
-                    <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Type & Press Enter">
+                    <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Type & Press Enter" @isset($sort_search) value="{{ $sort_search }}" @endisset>
                 </div>
             </div>
         </div>
     </form>
   <div class="card-body">
-      <table class="table mb-0" id="example1">
-          <thead>
-              <tr>
-                  <th data-breakpoints="lg">#</th>
-                  <th>Name</th>
-                  <th data-breakpoints="lg">Parent Category</th>
-                  <th data-breakpoints="lg">Icon</th>
-                  <th data-breakpoints="lg">Active</th>
-                  <th width="10%" class="text-right">Options</th>
-              </tr>
-          </thead>
-          <tbody>
-              @foreach($categories as $key => $category)
-                  <tr>
-                      <td>{{ ($key+1) + ($categories->currentPage() - 1)*$categories->perPage() }}</td>
-                      <td>{{ $category->name}}</td>
-                      <td>
-                          @php
-                              $parent = \App\Models\Category::where('id', $category->parent_id)->first();
-                          @endphp
-                          @if ($parent != null)
-                              {{ $parent->name }}
-                          @else
-                              ------
-                          @endif
-                      </td>
-                      <td>
-                          @if ($category->icon)
-                          <img alt="Icon" class="table-avatar" src="{{asset('images/category')}}/{{$category->icon}}" width="30">
-                          @else
-                              ------
-                          @endif
-                      </td>
-                      <td>
-                          <label class="switch">
-                            <input type="checkbox" value="{{$category->id}}" onchange="update_active(this)" name="my-checkbox" {{$category->status == 1 ? 'checked' : '' }}>
-                            <span class="slider round"></span>
-                          </label>                          
-                      </td>
-                      <td class="text-right">
-                        <a class="btn btn-info btn-sm" href="{{route('category.edit',$category->id)}}">
-                          <i class="fas fa-pencil-alt"> </i>
-                        </a>
-                        <a href="#" 
-                          data-id={{$category->id}}
-                          data-toggle="modal" 
-                          data-target="#deleteModal"
-                          class="btn btn-danger btn-sm delete">
-                          <i class="fas fa-trash"></i>
-                        </a>
-                      </td>
-                  </tr>
-              @endforeach
-          </tbody>
-      </table>
+    <table class="table footable">
+      <thead>
+      <tr>
+          <th data-breakpoints="lg">#</th>
+          <th>Name</th>
+          <th data-hide="phone">Parent Category</th>
+          <th data-hide="phone">Icon</th>
+          <th data-hide="phone">Active</th>
+          <th data-hide="phone">Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      @foreach ($categories as $key => $category)
+      <tr>
+        <td>{{ ($key+1) + ($categories->currentPage() - 1)*$categories->perPage()}}</td>
+        <td>{{ $category->name}}</td>
+        <td>
+          @php
+              $parent = \App\Models\Category::where('id', $category->parent_id)->first();
+          @endphp
+          @if ($parent != null)
+              {{ $parent->name }}
+          @else
+              ------
+          @endif
+      </td>
+        <td>
+          @if ($category->icon)
+          <img alt="Icon" class="table-avatar" src="{{asset('images/category')}}/{{$category->icon}}" width="30">
+          @else
+              ------
+          @endif
+        </td>
+        <td>
+          <label class="switch">
+            <input type="checkbox" value="{{$category->id}}" onchange="update_active(this)" name="my-checkbox" {{$category->status == 1 ? 'checked' : '' }}>
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <td>
+          <a class="btn btn-info btn-sm" href="{{route('category.edit',$category->id)}}">
+            <i class="fas fa-pencil-alt"> </i>
+          </a>
+          <a href="#" 
+            data-id={{$category->id}}
+            data-toggle="modal" 
+            data-target="#deleteModal"
+            class="btn btn-danger btn-sm delete">
+            <i class="fas fa-trash"></i>
+          </a>
+        </td>
+    </tr>  
+      @endforeach
+
+      </tbody>
+  </table>
       <div class="">
           {{ $categories->appends(request()->input())->links() }}
       </div>
@@ -205,17 +203,11 @@
     $('#id').val(id);
   });
 </script>
-<!-- DataTables  & Plugins -->
-<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js' ) }}"></script>
-<script src="{{asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' ) }}"></script>
-<script src="{{asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js' ) }}"></script>
-<script src="{{asset('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' ) }}"></script>
-<!-- Page specific script -->
-<script>
+{{-- footalble use for nice mobile view experinces --}}
+<script src="{{asset('assets/responsive-table/js/footable.js') }}"></script>
+<script type="text/javascript">
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-    });
+      $('.footable').footable();
   });
 </script>
 @endsection

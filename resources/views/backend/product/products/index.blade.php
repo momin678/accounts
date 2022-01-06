@@ -1,5 +1,9 @@
 @extends('backend.layouts.app')
 @section('content')
+@section('css')
+{{-- footalble use for nice mobile view experinces --}}
+<link rel="stylesheet" href="{{asset('assets/responsive-table/css/footable.core.css')}}">
+@endsection
 
 <div class="text-left mt-2 mb-3">
     <div class="row align-items-center">
@@ -21,21 +25,21 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group mb-0">
-                    <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Type & Press Enter">
+                    <input type="text" class="form-control form-control-sm" id="search" name="search" placeholder="Type & Press Enter" @isset($sort_search) value="{{ $sort_search }}" @endisset>
                 </div>
             </div>
         </div>
     </form>
     <div class="card-body">
-        <table class="table mb-0" id="example1">
+        <table class="table mb-0 footable">
             <thead>
                 <tr>
-                    <th >#</th>
-                    <th width="30%">Name</th>
-                    <th >Category</th>
-                    <th >Price</th>
-                    <th >Quintity</th>
-                    <th class="text-right">Options</th>
+                    <th data-breakpoints="lg">#</th>
+                    <th >Name</th>
+                    <th data-hide="phone" >Category</th>
+                    <th data-hide="phone" >Price</th>
+                    <th data-hide="phone" >Quintity</th>
+                    <th data-hide="phone" class="text-right">Options</th>
                 </tr>
             </thead>
             <tbody>
@@ -125,4 +129,11 @@
            $('#id').val(id);
       });
   </script>
+{{-- footalble use for nice mobile view experinces --}}
+<script src="{{asset('assets/responsive-table/js/footable.js') }}"></script>
+<script type="text/javascript">
+  $(function () {
+      $('.footable').footable();
+  });
+</script>
 @endsection

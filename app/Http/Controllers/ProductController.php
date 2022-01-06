@@ -28,7 +28,7 @@ class ProductController extends Controller
             $products = $products->where('name', 'like', '%'.$sort_search.'%');
         }
         $products = $products->paginate(15);
-        return view('backend.product.products.index', compact('brands', 'categories', 'products'));
+        return view('backend.product.products.index', compact('brands', 'categories', 'products', 'sort_search'));
     }
 
     /**

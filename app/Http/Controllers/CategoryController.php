@@ -23,7 +23,7 @@ class CategoryController extends Controller
             $categories = $categories->where('name', 'like', '%'.$sort_search.'%');
         }
         $categories = $categories->paginate(15);
-        return view('backend.product.categories.index', compact('categories'));
+        return view('backend.product.categories.index', compact('categories', 'sort_search'));
     }
 
     /**
